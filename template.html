@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jev Playbook for Marketers</title>
+<meta name="description" content="8 copy-paste prompts to use Jev, TypeSafe's decision model, for lead scoring, SEO, ads, content and sales. Plus 2 free tools. By @vibha.in.progress">
+<meta property="og:title" content="Jev Playbook for Marketers">
+<meta property="og:description" content="8 copy-paste Jev prompts + 2 free tools for marketers, founders and sales teams.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#f4f1ea;--card:#fbfaf6;--ink:#141414;--soft:#4a4740;--mute:#8a857a;--line:#dcd6c9;--jev:#2f5cff;--hot:#e5484d;--ok:#1f9d63;--warm:#f5a524;--code:#16171a;--codeink:#e8ebf0}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101113;--card:#17191c;--ink:#eceae4;--soft:#b9b5ab;--mute:#858177;--line:#2a2c30;--code:#0b0c0e}}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif}
+  a{color:var(--jev)}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+  .mono{font-family:'JetBrains Mono',monospace}
+  header.hero{padding-top:64px;padding-bottom:36px;border-bottom:2px solid var(--ink)}
+  .kick{font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--mute)}
+  h1{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(40px,7vw,76px);line-height:.98;letter-spacing:-.03em;margin:14px 0 18px}
+  h1 span{color:var(--jev)}
+  .lede{font-size:clamp(17px,2.2vw,20px);color:var(--soft);max-width:680px;margin:0}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:30px}
+  .stat{border:1.5px solid var(--ink);background:var(--card);padding:12px 14px}
+  .stat b{display:block;font-family:'Inter Tight';font-size:28px;line-height:1.1}
+  .stat span{font-family:'JetBrains Mono';font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--mute)}
+  .stat.dark{background:var(--ink);color:var(--bg)} .stat.dark span{color:inherit;opacity:.7}
+  section.block{padding:48px 0;border-bottom:1px solid var(--line)}
+  h2{font-family:'Inter Tight';font-weight:800;font-size:clamp(26px,4vw,36px);letter-spacing:-.02em;margin:0 0 12px;line-height:1.1}
+  h3{font-family:'JetBrains Mono';font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--mute);margin:0 0 10px;font-weight:600}
+  .three{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
+  .box{background:var(--card);border:1px solid var(--line);padding:18px;border-radius:4px}
+  .box p{margin:6px 0 0;color:var(--soft);font-size:15px}
+  .box b{font-family:'Inter Tight';font-size:18px}
+  .vs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
+  .vs .box h3{color:var(--ink)}
+  .vs ul{margin:0;padding-left:18px;color:var(--soft);font-size:15px}
+  .setup ol{counter-reset:s;list-style:none;padding:0;margin:20px 0 0;display:grid;gap:10px}
+  .setup li{counter-increment:s;background:var(--card);border:1px solid var(--line);padding:14px 16px 14px 56px;position:relative;border-radius:4px}
+  .setup li::before{content:counter(s);position:absolute;left:16px;top:12px;width:26px;height:26px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center;font:600 13px 'JetBrains Mono'}
+  .promptbox{background:var(--code);color:var(--codeink);border-radius:6px;overflow:hidden;min-width:0}
+  .pb-head{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 10px 8px 14px;border-bottom:1px solid #2a2d33;font:11px 'JetBrains Mono';text-transform:uppercase;letter-spacing:.08em;color:#8b93a1}
+  pre{margin:0;padding:14px;font:12.5px/1.65 'JetBrains Mono',monospace;white-space:pre-wrap;word-break:break-word;max-height:360px;overflow:auto}
+  button.copy{font:600 11px 'JetBrains Mono';text-transform:uppercase;letter-spacing:.06em;background:var(--jev);color:#fff;border:0;padding:7px 10px;border-radius:4px;cursor:pointer;white-space:nowrap}
+  button.copy.done{background:var(--ok)}
+  nav.toc{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);overflow-x:auto;white-space:nowrap}
+  nav.toc .wrap{display:flex;gap:18px;padding-top:10px;padding-bottom:10px}
+  nav.toc a{font:12px 'JetBrains Mono';color:var(--soft);text-decoration:none}
+  nav.toc a:hover{color:var(--jev)}
+  .case{padding:44px 0;border-bottom:1px solid var(--line);scroll-margin-top:50px}
+  .case-head{display:flex;gap:18px;align-items:flex-start}
+  .num{font:800 44px/1 'Inter Tight';color:var(--line);min-width:62px}
+  .case h2{margin:6px 0 2px}
+  .who{margin:0;color:var(--mute);font-size:14px}
+  .tag{font:600 10.5px 'JetBrains Mono';text-transform:uppercase;letter-spacing:.08em;padding:3px 8px;border-radius:3px}
+  .t-built{background:var(--ink);color:var(--bg)} .t-comm{background:var(--jev);color:#fff} .t-idea{background:var(--warm);color:#141414}
+  .what{font-size:18px;max-width:720px;margin:16px 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+  .chip{font:600 12.5px 'JetBrains Mono';border:1.5px solid var(--ink);padding:4px 10px;background:var(--card)}
+  .chip em{font-style:normal;color:var(--mute);font-weight:400}
+  a.tool{display:inline-block;background:var(--hot);color:#fff;text-decoration:none;font:600 14px Inter;padding:10px 16px;border-radius:4px;margin-bottom:18px}
+  .cols{display:grid;grid-template-columns:1fr 1.15fr;gap:22px;margin-top:8px}
+  .cols ol{margin:0;padding-left:20px;color:var(--soft)} .cols li{margin-bottom:6px}
+  .honest{font-size:14px;background:var(--card);border-left:3px solid var(--warm);padding:10px 12px;margin:16px 0 0;color:var(--soft)}
+  .limits ul{color:var(--soft)}
+  footer{padding:48px 0 64px;text-align:center;color:var(--mute);font-size:14px}
+  footer b{color:var(--ink);font-family:'Inter Tight';font-size:22px;display:block;margin-bottom:6px}
+  @media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}.three,.vs,.cols{grid-template-columns:1fr}.num{font-size:32px;min-width:44px}header.hero{padding-top:40px}}
+</style>
+</head>
+<body>
+
+<header class="hero wrap">
+  <div class="kick">The Jev playbook · by @vibha.in.progress</div>
+  <h1>8 things marketers can hand to <span>Jev</span> today</h1>
+  <p class="lede">Jev is a new AI model that doesn't write a single word. It just decides. Here are 8 copy-paste prompts for sales, SEO, ads and content, plus 2 free tools I built with it.</p>
+  <div class="stats">
+    <div class="stat dark"><b>700</b><span>leads scored</span></div>
+    <div class="stat"><b>8.9s</b><span>start to finish</span></div>
+    <div class="stat"><b>$0.0159</b><span>total cost</span></div>
+    <div class="stat"><b>0</b><span>words written</span></div>
+  </div>
+</header>
+
+<nav class="toc"><div class="wrap"><a href="#what">What is Jev</a><a href="#setup">Setup</a>{{NAV}}<a href="#limits">Limits</a></div></nav>
+
+<main class="wrap">
+
+<section class="block" id="what">
+  <h2>What Jev actually is</h2>
+  <p class="lede">Jev comes from TypeSafe, a startup that just came out of two years in stealth. It's not from OpenAI or Anthropic. You give it some context and a question, and it gives back an answer and how sure it is, usually in under a second, for a tiny fraction of a cent.</p>
+  <div class="three">
+    <div class="box"><b>Yes or no</b><p>"Is this lead showing a buying signal?" "Should this page link to that one?"</p></div>
+    <div class="box"><b>Pick a category</b><p>Hot, warm or cold. Buyer, fan or spam. Which funnel stage an ad is aimed at.</p></div>
+    <div class="box"><b>Plus how sure it is</b><p>Every answer comes with a confidence score, so you know which ones to double-check.</p></div>
+  </div>
+  <div class="vs">
+    <div class="box"><h3>Use Claude or ChatGPT for</h3><ul><li>Writing emails, posts, pages</li><li>Thinking through a strategy</li><li>Anything with a long answer</li></ul></div>
+    <div class="box"><h3>Use Jev for</h3><ul><li>The same judgement call made 100s or 1,000s of times</li><li>Sorting, scoring, routing, filtering</li><li>Anything where you'd otherwise pay a big model to answer with one word</li></ul></div>
+  </div>
+  <p style="margin-top:20px"><b>The simple rule: Claude writes, Jev decides.</b> Look for the step in your work where someone scrolls through a list making gut calls. That's a Jev job.</p>
+</section>
+
+<section class="block setup" id="setup">
+  <h2>Set it up once (5 minutes)</h2>
+  <ol>
+    <li><b>Get a key.</b> Make an account at <a href="https://openrouter.ai/settings/keys">openrouter.ai</a>, create an API key and add $5 of credit. That covers tens of thousands of decisions.</li>
+    <li><b>Open Claude</b> (desktop app, Code tab) <b>or Codex.</b> Anything that can run code for you works.</li>
+    <li><b>Copy any prompt below.</b> Every Copy button already includes the setup text that tells Claude how to talk to Jev, so you don't need to install anything else.</li>
+    <li><b>Paste your key when it asks.</b> It tests on 10 items first, then runs the whole list.</li>
+  </ol>
+  <div class="promptbox" style="margin-top:18px">
+    <div class="pb-head"><span>Setup text (included in every copy)</span><button class="copy" data-for="starter" data-raw="1">Copy</button></div>
+    <pre id="starter">{{STARTER}}</pre>
+  </div>
+  <p style="font-size:14px;color:var(--mute);margin-top:12px">Want Jev inside every Claude session? Also ask Claude: <span class="mono">Install Jev Skills from github.com/wuyoscar/jev-skill. Use the real Jev route with my OpenRouter key, not simulation.</span></p>
+</section>
+
+{{CARDS}}
+
+<section class="block limits" id="limits">
+  <h2>The honest limits</h2>
+  <ul>
+    <li><b>It's not always right.</b> Check 20 answers by hand before you trust it on your whole list, and look at the low-confidence ones first.</li>
+    <li><b>It's bad at rules.</b> Maths, dates, "sort by revenue". That's still a spreadsheet job.</li>
+    <li><b>It only decides.</b> Anything that needs writing goes to Claude.</li>
+    <li><b>It drafts, you approve.</b> Nothing in this playbook should email, post or change your site without you looking first.</li>
+    <li><b>Keep keys private.</b> Never paste your key into a file you share. If you ever do, delete it at openrouter.ai and make a new one.</li>
+  </ul>
+  <p style="font-size:14px;color:var(--mute)">Numbers marked with a handle come from builds people shared on the <a href="https://jev.openchamber.dev/">Jev builds feed</a>. Thank you to them.</p>
+</section>
+
+</main>
+
+<footer class="wrap">
+  <b>Made by Vibha · @vibha.in.progress</b>
+  I help non-technical founders and marketers get real work done with AI.<br>
+  <a href="https://www.instagram.com/vibha.in.progress/">Follow on Instagram</a> for the next one.
+</footer>
+
+<script>
+const STARTER=document.getElementById('starter').textContent;
+document.querySelectorAll('button.copy').forEach(b=>b.addEventListener('click',async()=>{
+  const body=document.getElementById(b.dataset.for).textContent;
+  const text=b.dataset.raw?body:STARTER+'\n\n---\n\n'+body;
+  try{await navigator.clipboard.writeText(text)}catch(e){const t=document.createElement('textarea');t.value=text;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove()}
+  const old=b.textContent;b.textContent='Copied ✓';b.classList.add('done');setTimeout(()=>{b.textContent=old;b.classList.remove('done')},1600);
+}));
+</script>
+</body>
+</html>

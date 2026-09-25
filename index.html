@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jev Playbook for Marketers</title>
+<meta name="description" content="8 copy-paste prompts to use Jev, TypeSafe's decision model, for lead scoring, SEO, ads, content and sales. Plus 2 free tools. By @vibha.in.progress">
+<meta property="og:title" content="Jev Playbook for Marketers">
+<meta property="og:description" content="8 copy-paste Jev prompts + 2 free tools for marketers, founders and sales teams.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#f4f1ea;--card:#fbfaf6;--ink:#141414;--soft:#4a4740;--mute:#8a857a;--line:#dcd6c9;--jev:#2f5cff;--hot:#e5484d;--ok:#1f9d63;--warm:#f5a524;--code:#16171a;--codeink:#e8ebf0}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101113;--card:#17191c;--ink:#eceae4;--soft:#b9b5ab;--mute:#858177;--line:#2a2c30;--code:#0b0c0e}}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif}
+  a{color:var(--jev)}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+  .mono{font-family:'JetBrains Mono',monospace}
+  header.hero{padding-top:64px;padding-bottom:36px;border-bottom:2px solid var(--ink)}
+  .kick{font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--mute)}
+  h1{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(40px,7vw,76px);line-height:.98;letter-spacing:-.03em;margin:14px 0 18px}
+  h1 span{color:var(--jev)}
+  .lede{font-size:clamp(17px,2.2vw,20px);color:var(--soft);max-width:680px;margin:0}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:30px}
+  .stat{border:1.5px solid var(--ink);background:var(--card);padding:12px 14px}
+  .stat b{display:block;font-family:'Inter Tight';font-size:28px;line-height:1.1}
+  .stat span{font-family:'JetBrains Mono';font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--mute)}
+  .stat.dark{background:var(--ink);color:var(--bg)} .stat.dark span{color:inherit;opacity:.7}
+  section.block{padding:48px 0;border-bottom:1px solid var(--line)}
+  h2{font-family:'Inter Tight';font-weight:800;font-size:clamp(26px,4vw,36px);letter-spacing:-.02em;margin:0 0 12px;line-height:1.1}
+  h3{font-family:'JetBrains Mono';font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--mute);margin:0 0 10px;font-weight:600}
+  .three{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
+  .box{background:var(--card);border:1px solid var(--line);padding:18px;border-radius:4px}
+  .box p{margin:6px 0 0;color:var(--soft);font-size:15px}
+  .box b{font-family:'Inter Tight';font-size:18px}
+  .vs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
+  .vs .box h3{color:var(--ink)}
+  .vs ul{margin:0;padding-left:18px;color:var(--soft);font-size:15px}
+  .setup ol{counter-reset:s;list-style:none;padding:0;margin:20px 0 0;display:grid;gap:10px}
+  .setup li{counter-increment:s;background:var(--card);border:1px solid var(--line);padding:14px 16px 14px 56px;position:relative;border-radius:4px}
+  .setup li::before{content:counter(s);position:absolute;left:16px;top:12px;width:26px;height:26px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center;font:600 13px 'JetBrains Mono'}
+  .promptbox{background:var(--code);color:var(--codeink);border-radius:6px;overflow:hidden;min-width:0}
+  .pb-head{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 10px 8px 14px;border-bottom:1px solid #2a2d33;font:11px 'JetBrains Mono';text-transform:uppercase;letter-spacing:.08em;color:#8b93a1}
+  pre{margin:0;padding:14px;font:12.5px/1.65 'JetBrains Mono',monospace;white-space:pre-wrap;word-break:break-word;max-height:360px;overflow:auto}
+  button.copy{font:600 11px 'JetBrains Mono';text-transform:uppercase;letter-spacing:.06em;background:var(--jev);color:#fff;border:0;padding:7px 10px;border-radius:4px;cursor:pointer;white-space:nowrap}
+  button.copy.done{background:var(--ok)}
+  nav.toc{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);overflow-x:auto;white-space:nowrap}
+  nav.toc .wrap{display:flex;gap:18px;padding-top:10px;padding-bottom:10px}
+  nav.toc a{font:12px 'JetBrains Mono';color:var(--soft);text-decoration:none}
+  nav.toc a:hover{color:var(--jev)}
+  .case{padding:44px 0;border-bottom:1px solid var(--line);scroll-margin-top:50px}
+  .case-head{display:flex;gap:18px;align-items:flex-start}
+  .num{font:800 44px/1 'Inter Tight';color:var(--line);min-width:62px}
+  .case h2{margin:6px 0 2px}
+  .who{margin:0;color:var(--mute);font-size:14px}
+  .tag{font:600 10.5px 'JetBrains Mono';text-transform:uppercase;letter-spacing:.08em;padding:3px 8px;border-radius:3px}
+  .t-built{background:var(--ink);color:var(--bg)} .t-comm{background:var(--jev);color:#fff} .t-idea{background:var(--warm);color:#141414}
+  .what{font-size:18px;max-width:720px;margin:16px 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+  .chip{font:600 12.5px 'JetBrains Mono';border:1.5px solid var(--ink);padding:4px 10px;background:var(--card)}
+  .chip em{font-style:normal;color:var(--mute);font-weight:400}
+  a.tool{display:inline-block;background:var(--hot);color:#fff;text-decoration:none;font:600 14px Inter;padding:10px 16px;border-radius:4px;margin-bottom:18px}
+  .cols{display:grid;grid-template-columns:1fr 1.15fr;gap:22px;margin-top:8px}
+  .cols ol{margin:0;padding-left:20px;color:var(--soft)} .cols li{margin-bottom:6px}
+  .honest{font-size:14px;background:var(--card);border-left:3px solid var(--warm);padding:10px 12px;margin:16px 0 0;color:var(--soft)}
+  .limits ul{color:var(--soft)}
+  footer{padding:48px 0 64px;text-align:center;color:var(--mute);font-size:14px}
+  footer b{color:var(--ink);font-family:'Inter Tight';font-size:22px;display:block;margin-bottom:6px}
+  @media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}.three,.vs,.cols{grid-template-columns:1fr}.num{font-size:32px;min-width:44px}header.hero{padding-top:40px}}
+</style>
+</head>
+<body>
+
+<header class="hero wrap">
+  <div class="kick">The Jev playbook · by @vibha.in.progress</div>
+  <h1>8 things marketers can hand to <span>Jev</span> today</h1>
+  <p class="lede">Jev is a new AI model that doesn't write a single word. It just decides. Here are 8 copy-paste prompts for sales, SEO, ads and content, plus 2 free tools I built with it.</p>
+  <div class="stats">
+    <div class="stat dark"><b>700</b><span>leads scored</span></div>
+    <div class="stat"><b>8.9s</b><span>start to finish</span></div>
+    <div class="stat"><b>$0.0159</b><span>total cost</span></div>
+    <div class="stat"><b>0</b><span>words written</span></div>
+  </div>
+</header>
+
+<nav class="toc"><div class="wrap"><a href="#what">What is Jev</a><a href="#setup">Setup</a><a href="#lead-scoring">01 Lead scoring</a><a href="#link-audit">02 Internal link audit (SEO)</a><a href="#focus-group">03 AI focus group</a><a href="#competitor-ads">04 Competitor ad sorter</a><a href="#comment-triage">05 Instagram comment &amp; DM triage</a><a href="#keyword-intent">06 Keyword intent sorter</a><a href="#visitor-followup">07 Website visitor → best follow-up</a><a href="#hook-analyser">08 Viral hook analyser</a><a href="#limits">Limits</a></div></nav>
+
+<main class="wrap">
+
+<section class="block" id="what">
+  <h2>What Jev actually is</h2>
+  <p class="lede">Jev comes from TypeSafe, a startup that just came out of two years in stealth. It's not from OpenAI or Anthropic. You give it some context and a question, and it gives back an answer and how sure it is, usually in under a second, for a tiny fraction of a cent.</p>
+  <div class="three">
+    <div class="box"><b>Yes or no</b><p>"Is this lead showing a buying signal?" "Should this page link to that one?"</p></div>
+    <div class="box"><b>Pick a category</b><p>Hot, warm or cold. Buyer, fan or spam. Which funnel stage an ad is aimed at.</p></div>
+    <div class="box"><b>Plus how sure it is</b><p>Every answer comes with a confidence score, so you know which ones to double-check.</p></div>
+  </div>
+  <div class="vs">
+    <div class="box"><h3>Use Claude or ChatGPT for</h3><ul><li>Writing emails, posts, pages</li><li>Thinking through a strategy</li><li>Anything with a long answer</li></ul></div>
+    <div class="box"><h3>Use Jev for</h3><ul><li>The same judgement call made 100s or 1,000s of times</li><li>Sorting, scoring, routing, filtering</li><li>Anything where you'd otherwise pay a big model to answer with one word</li></ul></div>
+  </div>
+  <p style="margin-top:20px"><b>The simple rule: Claude writes, Jev decides.</b> Look for the step in your work where someone scrolls through a list making gut calls. That's a Jev job.</p>
+</section>
+
+<section class="block setup" id="setup">
+  <h2>Set it up once (5 minutes)</h2>
+  <ol>
+    <li><b>Get a key.</b> Make an account at <a href="https://openrouter.ai/settings/keys">openrouter.ai</a>, create an API key and add $5 of credit. That covers tens of thousands of decisions.</li>
+    <li><b>Open Claude</b> (desktop app, Code tab) <b>or Codex.</b> Anything that can run code for you works.</li>
+    <li><b>Copy any prompt below.</b> Every Copy button already includes the setup text that tells Claude how to talk to Jev, so you don't need to install anything else.</li>
+    <li><b>Paste your key when it asks.</b> It tests on 10 items first, then runs the whole list.</li>
+  </ol>
+  <div class="promptbox" style="margin-top:18px">
+    <div class="pb-head"><span>Setup text (included in every copy)</span><button class="copy" data-for="starter" data-raw="1">Copy</button></div>
+    <pre id="starter">I&#x27;m not technical, so please do everything for me and explain each step in plain English.
+
+Use Jev, TypeSafe&#x27;s decision model (model id: typesafe/jev-1.13), through OpenRouter&#x27;s Decisions API:
+POST https://openrouter.ai/api/alpha/decisions
+Header: Authorization: Bearer &lt;my OpenRouter key&gt;
+Body: {&quot;model&quot;: &quot;typesafe/jev-1.13&quot;, &quot;state&quot;: &quot;&lt;the context as plain text&gt;&quot;, &quot;questions&quot;: {&quot;&lt;name&gt;&quot;: {&quot;type&quot;: &quot;choice&quot;, &quot;instructions&quot;: &quot;...&quot;, &quot;criteria&quot;: {&quot;option_a&quot;: &quot;what it means&quot;, &quot;option_b&quot;: &quot;...&quot;}}, &quot;&lt;name2&gt;&quot;: {&quot;type&quot;: &quot;noul&quot;, &quot;instructions&quot;: &quot;&lt;a yes/no question&gt;&quot;}}}
+Jev returns answers with probabilities and a confidence score. It never writes text, so use Claude for any writing.
+
+Ask me for my OpenRouter key when you need it and never save it in a file I might share. Run requests in parallel (about 40 at a time) and retry if one fails. Test on 10 items first and show me the results before running everything. Tell me the total Jev cost at the end.</pre>
+  </div>
+  <p style="font-size:14px;color:var(--mute);margin-top:12px">Want Jev inside every Claude session? Also ask Claude: <span class="mono">Install Jev Skills from github.com/wuyoscar/jev-skill. Use the real Jev route with my OpenRouter key, not simulation.</span></p>
+</section>
+
+
+<section class="case" id="lead-scoring">
+  <div class="case-head">
+    <span class="num">01</span>
+    <div>
+      <span class="tag t-built">I built this</span>
+      <h2>Lead scoring</h2>
+      <p class="who">For: Sales, BD, founders</p>
+    </div>
+  </div>
+  <p class="what">Reads every lead against your ideal customer and tells you who to call today, who to nurture and who to skip, with how sure it is.</p>
+  <div class="chips"><span class="chip">700 leads <em>my run</em></span><span class="chip">8.9 sec</span><span class="chip">$0.0159</span></div>
+  <a class="tool" href="tools/lead-scorer/">Open the Lead X-Ray tool →</a>
+  <div class="cols">
+    <div>
+      <h3>Step by step</h3>
+      <ol><li>Write 3 lines on your ideal customer: role, company type, size, and what a buying signal looks like.</li><li>Export your leads as a CSV from your CRM, LinkedIn Sales Navigator or a spreadsheet.</li><li>Use the ready-made tool above, or paste the prompt into Claude to build your own version.</li><li>Download the scored list and call the HOT ones first.</li></ol>
+      <p class="honest"><b>Honest bit:</b> Garbage in, garbage out. If your CSV only has names and emails, Jev has nothing to judge. Add a job title, company and any notes you have.</p>
+    </div>
+    <div class="promptbox">
+      <div class="pb-head"><span>Prompt · paste into Claude or Codex</span><button class="copy" data-for="p-lead-scoring">Copy prompt</button></div>
+      <pre id="p-lead-scoring">Score my leads with Jev.
+1. Ask me to describe my ideal customer and to upload my lead CSV.
+2. For each lead, ask Jev (choice): hot, warm or cold. Hot = strong fit AND a recent buying signal. Warm = good fit, no signal yet. Cold = wrong role, company or size.
+3. Also ask Jev (noul): &quot;Is there a recent buying signal?&quot;
+4. Build me a simple page that shows the leads being scored live, with a timer and the total cost.
+5. Let me download the scored list, sorted best first.</pre>
+    </div>
+  </div>
+</section>
+<section class="case" id="link-audit">
+  <div class="case-head">
+    <span class="num">02</span>
+    <div>
+      <span class="tag t-built">I built this</span>
+      <h2>Internal link audit (SEO)</h2>
+      <p class="who">For: SEO, content, website owners</p>
+    </div>
+  </div>
+  <p class="what">Reads every page on your site, finds the related pages that should link to each other, picks the anchor text and fixes orphan pages. You get a CSV link plan.</p>
+  <div class="chips"><span class="chip">1,208 pages <em>my run</em></span><span class="chip">6,718 decisions</span><span class="chip">3,013 links</span><span class="chip">3 min 49 sec</span><span class="chip">$0.22 vs ~$26.71 on Claude Opus</span></div>
+  <a class="tool" href="tools/link-audit/">Open the Link Audit tool →</a>
+  <div class="cols">
+    <div>
+      <h3>Step by step</h3>
+      <ol><li>Get your OpenRouter key ready.</li><li>Download this playbook and ask Claude to start the link audit tool for you (instructions on the tool page).</li><li>Paste your website and hit Run. It reads your sitemap, then Jev decides every link.</li><li>Download the CSV and hand it to whoever edits your site. Start with the orphan pages.</li></ol>
+      <p class="honest"><b>Honest bit:</b> Jev picks the links, a human still places them. Skim the CSV before anything goes live, especially links to your money pages.</p>
+    </div>
+    <div class="promptbox">
+      <div class="pb-head"><span>Prompt · paste into Claude or Codex</span><button class="copy" data-for="p-link-audit">Copy prompt</button></div>
+      <pre id="p-link-audit">Audit my website&#x27;s internal links with Jev.
+1. Read every page in my sitemap: title, H1, main text and the links already on it.
+2. For each page, find the 6 most related pages it doesn&#x27;t link to yet.
+3. For each pair, ask Jev (noul): &quot;Following hub-and-spoke SEO rules, should this page link to that page?&quot; Articles link up to their service pages, service pages link down to their articles, and no forced links between unrelated topics.
+4. Ask Jev (choice) which of 2 or 3 anchor text options is the most descriptive.
+5. Flag orphan pages (nothing links to them) and give me a CSV: source page, target page, anchor text, confidence.</pre>
+    </div>
+  </div>
+</section>
+<section class="case" id="focus-group">
+  <div class="case-head">
+    <span class="num">03</span>
+    <div>
+      <span class="tag t-comm">From the community</span>
+      <h2>AI focus group</h2>
+      <p class="who">For: Marketers, media buyers, founders</p>
+    </div>
+  </div>
+  <p class="what">Creates 30 buyer personas and has each one decide &#x27;stop or scroll&#x27; on every ad, so you know which ads stop your buyer before you spend on them.</p>
+  <div class="chips"><span class="chip">723 ads <em>@TheMattBerman</em></span><span class="chip">30 personas</span><span class="chip">21,690 decisions</span><span class="chip">22¢</span></div>
+  
+  <div class="cols">
+    <div>
+      <h3>Step by step</h3>
+      <ol><li>Describe your product and who buys it.</li><li>Collect competitor ads (Meta Ad Library, screenshots or ad text are fine).</li><li>Paste the prompt. Claude writes the personas, Jev makes every stop-or-scroll call.</li><li>Use the winners to brief your next ads.</li></ol>
+      <p class="honest"><b>Honest bit:</b> Personas are a simulation, not real people. Use it to pick what to test, not to skip testing.</p>
+    </div>
+    <div class="promptbox">
+      <div class="pb-head"><span>Prompt · paste into Claude or Codex</span><button class="copy" data-for="p-focus-group">Copy prompt</button></div>
+      <pre id="p-focus-group">Build me an AI focus group with Jev.
+1. Ask me about my product and who buys it. Then write 30 realistic, varied buyer personas (Claude writes these).
+2. Help me collect ads from the Meta Ad Library for the competitors I name (ad text, headline, image description).
+3. For every persona and ad, ask Jev (noul): &quot;Would this person stop scrolling for this ad?&quot;
+4. And ask Jev (choice) what stopped them: offer, hook, visual, social proof or nothing.
+5. Show me a grid of personas vs ads, the top 5 ads by stop rate, and which persona each ad wins.</pre>
+    </div>
+  </div>
+</section>
+<section class="case" id="competitor-ads">
+  <div class="case-head">
+    <span class="num">04</span>
+    <div>
+      <span class="tag t-comm">From the community</span>
+      <h2>Competitor ad sorter</h2>
+      <p class="who">For: Marketers, agencies, founders</p>
+    </div>
+  </div>
+  <p class="what">Sorts every live competitor ad by funnel stage, angle and offer, so you can see their whole strategy on one page, and the angles nobody is using.</p>
+  <div class="chips"><span class="chip">1,891 ads <em>@OriSilver</em></span><span class="chip">19 sec</span><span class="chip">$0.12</span></div>
+  
+  <div class="cols">
+    <div>
+      <h3>Step by step</h3>
+      <ol><li>List 3 to 10 competitors.</li><li>Pull their live ads from the Meta Ad Library (Claude can help, or use a scraper like Apify).</li><li>Paste the prompt. Jev tags every ad.</li><li>Read the gaps table. That&#x27;s your next campaign.</li></ol>
+      <p class="honest"><b>Honest bit:</b> The Ad Library shows what&#x27;s running, not what&#x27;s working. Ads that have been running for a long time are your best clue.</p>
+    </div>
+    <div class="promptbox">
+      <div class="pb-head"><span>Prompt · paste into Claude or Codex</span><button class="copy" data-for="p-competitor-ads">Copy prompt</button></div>
+      <pre id="p-competitor-ads">Sort my competitors&#x27; ads with Jev.
+1. Help me collect all active ads for these competitors from the Meta Ad Library: [competitor names]. Get the ad text, headline, call to action and landing page. Ask me before spending money on any scraping tool.
+2. For every ad, ask Jev (choice) the funnel stage: unaware, problem aware, solution aware, product aware or most aware.
+3. Ask Jev (choice) the main angle: price, pain, outcome, social proof, urgency or authority.
+4. Ask Jev (choice) the offer type: free trial, discount, lead magnet, demo, straight purchase or none.
+5. Give me a table per brand, plus a gaps table showing the angles and stages nobody is using.</pre>
+    </div>
+  </div>
+</section>
+<section class="case" id="comment-triage">
+  <div class="case-head">
+    <span class="num">05</span>
+    <div>
+      <span class="tag t-idea">My pick</span>
+      <h2>Instagram comment &amp; DM triage</h2>
+      <p class="who">For: Creators, brands, social media managers</p>
+    </div>
+  </div>
+  <p class="what">Sorts hundreds of comments and DMs into buyers, questions, fans, brand deals and spam, so you reply to the people who want to buy first.</p>
+  
+  
+  <div class="cols">
+    <div>
+      <h3>Step by step</h3>
+      <ol><li>Export or copy your comments and DMs (Claude can help you get them).</li><li>Paste the prompt.</li><li>Jev sorts everything. Claude drafts replies for buyers and questions only.</li><li>You read, tweak and send. Nothing goes out on its own.</li></ol>
+      <p class="honest"><b>Honest bit:</b> It drafts, you approve. Never let it reply to people on its own.</p>
+    </div>
+    <div class="promptbox">
+      <div class="pb-head"><span>Prompt · paste into Claude or Codex</span><button class="copy" data-for="p-comment-triage">Copy prompt</button></div>
+      <pre id="p-comment-triage">Triage my Instagram comments and DMs with Jev.
+1. Help me get my recent comments and DMs into a list (a CSV or a paste is fine).
+2. For each one, ask Jev (choice): buyer intent, a question I should answer, fan, collab or brand deal, or spam.
+3. Ask Jev (noul): &quot;Does this need a reply from me today?&quot;
+4. For the buyer and question ones only, have Claude draft a reply in my voice for me to approve. Don&#x27;t send anything.
+5. Give me the sorted list, buyers first.</pre>
+    </div>
+  </div>
+</section>
+<section class="case" id="keyword-intent">
+  <div class="case-head">
+    <span class="num">06</span>
+    <div>
+      <span class="tag t-idea">My pick</span>
+      <h2>Keyword intent sorter</h2>
+      <p class="who">For: SEO, content, paid search</p>
+    </div>
+  </div>
+  <p class="what">Sorts your whole keyword list by search intent and whether the searcher could actually buy from you, so you build pages for the keywords that pay.</p>
+  
+  
+  <div class="cols">
+    <div>
+      <h3>Step by step</h3>
+      <ol><li>Export your keywords from Google Search Console, Google Ads or any SEO tool.</li><li>Write one line on what you sell.</li><li>Paste the prompt.</li><li>Build pages for the top 20 first.</li></ol>
+      <p class="honest"><b>Honest bit:</b> Jev judges intent from the words alone. For your biggest keywords, still look at what Google actually shows.</p>
+    </div>
+    <div class="promptbox">
+      <div class="pb-head"><span>Prompt · paste into Claude or Codex</span><button class="copy" data-for="p-keyword-intent">Copy prompt</button></div>
+      <pre id="p-keyword-intent">Sort my keyword list with Jev.
+1. Ask me for my keyword CSV and one line on what I sell.
+2. For every keyword, ask Jev (choice) the intent: informational, commercial, transactional, navigational or local.
+3. Ask Jev (noul): &quot;Could someone searching this realistically buy what I sell?&quot;
+4. Group the keywords into topic clusters (Claude can do the grouping).
+5. Tell me the 20 keywords to build pages for first, and which existing page each one belongs to.</pre>
+    </div>
+  </div>
+</section>
+<section class="case" id="visitor-followup">
+  <div class="case-head">
+    <span class="num">07</span>
+    <div>
+      <span class="tag t-idea">Idea via @angus.sewell</span>
+      <h2>Website visitor → best follow-up</h2>
+      <p class="who">For: Sales, marketing ops, founders</p>
+    </div>
+  </div>
+  <p class="what">When someone visits your site, Jev combines what they looked at, where they came from and your CRM, and picks which of your follow-up emails fits them best.</p>
+  
+  
+  <div class="cols">
+    <div>
+      <h3>Step by step</h3>
+      <ol><li>Write 3 to 6 follow-up email templates (Claude can help).</li><li>Export recent visitors or leads from your analytics or CRM.</li><li>Paste the prompt. Jev picks a template for each person.</li><li>Review and send. Once you trust the picks, have it prepare drafts in your CRM.</li></ol>
+      <p class="honest"><b>Honest bit:</b> Only follow up with people who gave you their details. Check your privacy rules before you enrich anyone.</p>
+    </div>
+    <div class="promptbox">
+      <div class="pb-head"><span>Prompt · paste into Claude or Codex</span><button class="copy" data-for="p-visitor-followup">Copy prompt</button></div>
+      <pre id="p-visitor-followup">Match my website visitors to the best follow-up email with Jev.
+1. Ask me which analytics and CRM tools I use. Start with a CSV export if that&#x27;s easier.
+2. For each visitor or lead, combine the pages they viewed, where they came from, their company, and whether they&#x27;re already in my CRM.
+3. Ask Jev (choice) which of my follow-up templates fits best: [paste your template names and one line on each].
+4. Ask Jev (noul): &quot;Is this person ready for a sales call?&quot;
+5. Put the pick next to each person so I can review and send. Don&#x27;t send anything automatically.</pre>
+    </div>
+  </div>
+</section>
+<section class="case" id="hook-analyser">
+  <div class="case-head">
+    <span class="num">08</span>
+    <div>
+      <span class="tag t-comm">From the community</span>
+      <h2>Viral hook analyser</h2>
+      <p class="who">For: Content creators, social media managers</p>
+    </div>
+  </div>
+  <p class="what">Reads hundreds of posts in your niche, tags every hook by type, and shows you which kinds of hooks actually get views. Then Claude writes you 10 in that style.</p>
+  <div class="chips"><span class="chip">100,000 posts <em>@0xMovez</em></span><span class="chip">20 sec</span><span class="chip">$0.67</span></div>
+  
+  <div class="cols">
+    <div>
+      <h3>Step by step</h3>
+      <ol><li>Pick 5 to 10 accounts in your niche.</li><li>Collect their recent posts with view counts (a scraper like Apify works).</li><li>Paste the prompt. Jev tags every hook.</li><li>Use the winning hook types for your next week of content.</li></ol>
+      <p class="honest"><b>Honest bit:</b> Views depend on more than the hook. Treat this as a direction, not a formula.</p>
+    </div>
+    <div class="promptbox">
+      <div class="pb-head"><span>Prompt · paste into Claude or Codex</span><button class="copy" data-for="p-hook-analyser">Copy prompt</button></div>
+      <pre id="p-hook-analyser">Analyse the hooks in my niche with Jev.
+1. Help me collect the last 200 posts from these accounts, with views and the first line: [handles]. Ask me before spending money on a scraper.
+2. For each post, ask Jev (choice) the hook type: number, contrarian, how-to, story, question, before and after, or news.
+3. Ask Jev (noul): &quot;Does the first line promise a specific payoff?&quot;
+4. Show me which hook types get the most views on average.
+5. Then have Claude write me 10 hooks for my topic in the top 3 styles.</pre>
+    </div>
+  </div>
+</section>
+
+<section class="block limits" id="limits">
+  <h2>The honest limits</h2>
+  <ul>
+    <li><b>It's not always right.</b> Check 20 answers by hand before you trust it on your whole list, and look at the low-confidence ones first.</li>
+    <li><b>It's bad at rules.</b> Maths, dates, "sort by revenue". That's still a spreadsheet job.</li>
+    <li><b>It only decides.</b> Anything that needs writing goes to Claude.</li>
+    <li><b>It drafts, you approve.</b> Nothing in this playbook should email, post or change your site without you looking first.</li>
+    <li><b>Keep keys private.</b> Never paste your key into a file you share. If you ever do, delete it at openrouter.ai and make a new one.</li>
+  </ul>
+  <p style="font-size:14px;color:var(--mute)">Numbers marked with a handle come from builds people shared on the <a href="https://jev.openchamber.dev/">Jev builds feed</a>. Thank you to them.</p>
+</section>
+
+</main>
+
+<footer class="wrap">
+  <b>Made by Vibha · @vibha.in.progress</b>
+  I help non-technical founders and marketers get real work done with AI.<br>
+  <a href="https://www.instagram.com/vibha.in.progress/">Follow on Instagram</a> for the next one.
+</footer>
+
+<script>
+const STARTER=document.getElementById('starter').textContent;
+document.querySelectorAll('button.copy').forEach(b=>b.addEventListener('click',async()=>{
+  const body=document.getElementById(b.dataset.for).textContent;
+  const text=b.dataset.raw?body:STARTER+'\n\n---\n\n'+body;
+  try{await navigator.clipboard.writeText(text)}catch(e){const t=document.createElement('textarea');t.value=text;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove()}
+  const old=b.textContent;b.textContent='Copied ✓';b.classList.add('done');setTimeout(()=>{b.textContent=old;b.classList.remove('done')},1600);
+}));
+</script>
+</body>
+</html>

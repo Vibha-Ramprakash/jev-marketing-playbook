@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Internal Link Audit · Jev</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&family=Inter+Tight:wght@600;800&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0d0e10;--card:#15171b;--line:#262a31;--ink:#e9ecf1;--mute:#7d8594;--jev:#5b8cff;--opus:#ff8a4c;--ok:#35c48a;--warn:#f5a524}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px}
+  .wrap{max-width:1200px;margin:0 auto;padding:22px 16px 40px}
+  header{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:12px}
+  .kick{color:var(--mute);font-size:10px;text-transform:uppercase;letter-spacing:.12em}
+  h1{font-family:'Inter Tight',sans-serif;font-weight:600;font-size:28px;letter-spacing:-.01em;margin:4px 0 0}
+  .clock{font-size:30px;font-weight:800;font-variant-numeric:tabular-nums}
+  .pill{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);padding:4px 10px;border-radius:99px;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--mute)}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--mute)}
+  .run .dot{background:#ff5b5b;animation:bl 1s infinite}.done .dot{background:var(--ok)}
+  @keyframes bl{50%{opacity:.2}}
+  .vs{display:grid;grid-template-columns:1.6fr 1fr;gap:10px;margin:14px 0}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+  .who{display:flex;align-items:center;gap:8px;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--mute)}
+  .who i{width:8px;height:8px;border-radius:50%;display:inline-block}
+  .big{font-family:'Inter Tight',sans-serif;font-size:64px;font-weight:600;line-height:1;margin:10px 0 2px;font-variant-numeric:tabular-nums}
+  .big small{font-size:18px;color:var(--mute);font-family:'JetBrains Mono'}
+  .prog{height:3px;background:var(--line);margin:10px 0 12px;border-radius:2px;overflow:hidden}
+  .prog i{display:block;height:100%;background:var(--jev);width:0;transition:width .15s}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+  .stats .k{font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--mute)}
+  .stats .v{font-size:20px;font-weight:800;margin-top:3px;font-variant-numeric:tabular-nums}
+  .opus .big{color:var(--opus)}
+  .opus .note{color:var(--mute);font-size:10.5px;line-height:1.6;margin-top:10px}
+  .grid{display:grid;grid-template-columns:1.6fr 1fr;gap:10px}
+  .ph{display:flex;justify-content:space-between;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--mute);margin-bottom:8px}
+  .feed{height:430px;overflow:hidden;font-size:11px;line-height:1.75}
+  .feed div{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;animation:fl .5s ease-out}
+  @keyframes fl{from{background:rgba(91,140,255,.25)}to{background:transparent}}
+  .a{color:var(--jev)} .arr{color:var(--mute)} .p{color:var(--ok)}
+  .side{display:flex;flex-direction:column;gap:10px}
+  .row{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px dashed var(--line)}
+  .row b{font-variant-numeric:tabular-nums}
+  .bar{height:18px;background:var(--line);position:relative;margin:6px 0;border-radius:3px;overflow:hidden}
+  .bar i{position:absolute;inset:0 auto 0 0;transition:width .2s}
+  .bar span{position:absolute;left:8px;top:2px;font-size:10px}
+  .log{height:150px;overflow:hidden;font-size:10.5px;line-height:1.6;color:var(--mute)}
+  .ctrl{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:14px}
+  input,button{font-family:inherit;font-size:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:9px 11px;border-radius:6px}
+  #url{width:280px} #key{width:260px}
+  button{background:var(--jev);border-color:var(--jev);color:#fff;cursor:pointer;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+  button.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+  .err{color:#ff6b6b}
+  .local{background:#1b2440;border:1px solid var(--jev);border-radius:10px;padding:14px 16px;margin-top:14px;line-height:1.7}
+  .local code{background:#0d0e10;padding:2px 6px;border-radius:4px}
+  .local a,.back{color:var(--jev)}.hide{display:none!important}
+  @media(max-width:860px){.vs,.grid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}#url,#key{width:100%}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <div class="kick" id="kick">internal link audit · whole site · hub-and-spoke rubric</div>
+      <h1 id="h1">Internal link audit</h1>
+    </div>
+    <div style="text-align:right">
+      <div class="clock" id="clock">00.00s</div>
+      <div class="pill" id="status"><span class="dot"></span><span id="stxt">ready</span></div>
+    </div>
+  </header>
+
+  <div class="vs">
+    <div class="card">
+      <div class="who"><i style="background:var(--jev)"></i>Jev · typesafe/jev-1.13</div>
+      <div class="big" id="bigPages">0<small id="ofPages"> / 0 pages</small></div>
+      <div class="prog"><i id="prog"></i></div>
+      <div class="stats">
+        <div><div class="k">link decisions</div><div class="v" id="nDec">0</div></div>
+        <div><div class="k">links placed</div><div class="v" id="nLinks" style="color:var(--ok)">0</div></div>
+        <div><div class="k">orphans fixed</div><div class="v" id="nOrph">0</div></div>
+        <div><div class="k">jev cost</div><div class="v" id="cost">$0.000</div></div>
+      </div>
+    </div>
+    <div class="card opus">
+      <div class="who"><i style="background:var(--opus)"></i>Claude Opus 5.5 · same decisions</div>
+      <div class="big" id="opus">$0.00</div>
+      <div class="note">Same prompts, same tokens, priced at Opus 5.5 rates<br>($4 / M in, $20 / M out, ~40 tokens out per verdict).</div>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="ph"><span>links placed · source → target · anchor</span><span id="phase">—</span></div>
+      <div class="feed" id="feed"></div>
+    </div>
+    <div class="side">
+      <div class="card">
+        <div class="ph"><span>site structure</span><span id="nRead">0 read</span></div>
+        <div class="row"><span>Service / pillar pages</span><b id="rPillar">0</b></div>
+        <div class="row"><span>Industry & use-case pages</span><b id="rIndustry">0</b></div>
+        <div class="row"><span>Articles & tips</span><b id="rArticle">0</b></div>
+        <div class="row"><span>Utility (skipped)</span><b id="rUtil">0</b></div>
+      </div>
+      <div class="card">
+        <div class="ph"><span>orphan pages · 0 contextual links in</span></div>
+        <div class="bar"><i id="oBefore" style="background:#ff6b6b;width:0"></i><span id="oBeforeT">before · 0</span></div>
+        <div class="bar"><i id="oAfter" style="background:var(--ok);width:0"></i><span id="oAfterT">after · 0</span></div>
+      </div>
+      <div class="card">
+        <div class="ph"><span>reading</span><span id="reqs">0 calls</span></div>
+        <div class="log" id="log"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ctrl" id="ctrl">
+    <input id="url" placeholder="https://yoursite.com">
+    <input type="password" id="key" autocomplete="off" data-lpignore="true" data-1p-ignore placeholder="OpenRouter API key (sk-or-...)">
+    <button id="go">Run audit</button>
+    <span id="msg" style="color:var(--mute)"></span>
+  </div>
+  <div class="local hide" id="local">
+    <b>This tool runs on your computer.</b> Browsers aren't allowed to read other websites directly, so it needs a tiny helper that comes in the download.<br>
+    1 · <a href="https://github.com/Vibha-Ramprakash/jev-marketing-playbook/archive/refs/heads/main.zip">Download the playbook</a> and unzip it.<br>
+    2 · Open the folder in Claude (desktop app, Code tab) and say: <code>Start the Jev link audit tool in tools/link-audit and open it for me</code><br>
+    3 · Paste your website and OpenRouter key, hit Run. A 1,000 page site costs about 15 cents.
+  </div>
+  <p style="font-size:11px;color:var(--mute)">Your key stays in your browser. Every Jev call goes straight to OpenRouter. <a class="back" href="../../">← back to the Jev playbook</a></p>
+  <div class="ctrl hide" id="after">
+    <button class="ghost" id="dl">Download link plan (CSV)</button>
+  </div>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+try{$('key').value=localStorage.getItem('or_key')||''}catch(e){}
+fetch('/fetch?url='+encodeURIComponent('https://example.com')).then(r=>{if(!r.ok||!r.headers.get('X-Final-Url'))throw 0}).catch(()=>{$('local').classList.remove('hide');$('go').disabled=true;$('go').style.opacity=.4});
+const K=6, ACCEPT=0.6, PAGE_CONC=48, JEV_CONC=96, MAX_PAGES=1500;
+let fatal=null, host='', t0=0, timer=null, calls=0, cost=0, tokIn=0, decisions=0;
+const pages=new Map(), placed=[];
+
+// ---------- fetching ----------
+async function get(url){const r=await fetch('/fetch?url='+encodeURIComponent(url));if(!r.ok)throw new Error(r.status);return{text:await r.text(),final:r.headers.get('X-Final-Url')||url}}
+function norm(href,base){try{const u=new URL(href,base);if(!/^https?:$/.test(u.protocol))return null;u.hash='';u.search='';u.hostname=u.hostname.replace(/^www\./,'');
+  if(!/\.[a-z0-9]{2,5}$/i.test(u.pathname)&&!u.pathname.endsWith('/'))u.pathname+='/';return u.href}catch(e){return null}}
+const FILE=/\.(pdf|jpe?g|png|gif|webp|svg|zip|mp4|mp3|docx?|xlsx?|pptx?|xml|txt)$/i;
+const UTIL=/\/(privacy|terms|cookie|contact|cart|checkout|login|my-account|thank|author|tag|category|feed|wp-|search|sitemap|legal|disclaimer)/i;
+function log(t){const d=document.createElement('div');d.textContent=t;const l=$('log');l.prepend(d);if(l.children.length>12)l.lastChild.remove()}
+async function sitemapUrls(origin){
+  const found=new Set(), queue=[];
+  try{const r=await get(origin+'/robots.txt');(r.text.match(/^sitemap:\s*(\S+)/gim)||[]).forEach(l=>queue.push(l.split(/:\s*/).slice(1).join(':').trim()))}catch(e){}
+  if(!queue.length)queue.push(origin+'/sitemap_index.xml',origin+'/sitemap.xml');
+  const seen=new Set();
+  while(queue.length){const sm=queue.shift();if(seen.has(sm))continue;seen.add(sm);
+    try{const r=await get(sm);log('sitemap '+sm.replace(origin,''));const x=new DOMParser().parseFromString(r.text,'text/xml');
+      x.querySelectorAll('sitemap > loc').forEach(n=>queue.push(n.textContent.trim()));
+      x.querySelectorAll('url > loc').forEach(n=>{const u=norm(n.textContent.trim());if(u)found.add(u)})}catch(e){}}
+  return [...found];
+}
+function parsePage(url,html){
+  const doc=new DOMParser().parseFromString(html,'text/html');
+  const clean=s=>(s||'').replace(/\s+/g,' ').trim();
+  let title=clean(doc.title).split(/\s[|\-–—]\s/)[0];
+  const h1=clean(doc.querySelector('h1')?.textContent);
+  const meta=clean(doc.querySelector('meta[name="description"]')?.content);
+  const root=(doc.querySelector('article .entry-content, .entry-content, main article, article, main, #content')||doc.body).cloneNode(true);
+  root.querySelectorAll('header,nav,footer,aside,script,style,noscript,form,.menu,.sidebar,.breadcrumb,.breadcrumbs,.related,.share').forEach(n=>n.remove());
+  let full=clean(root.textContent);const hi=h1?full.indexOf(h1):-1;if(hi>=0)full=full.slice(hi+h1.length);const text=full.slice(0,600);
+  const links=new Set();root.querySelectorAll('a[href]').forEach(a=>{const u=norm(a.getAttribute('href'),url);if(u&&new URL(u).hostname===host&&u!==url&&!FILE.test(u))links.add(u)});
+  return{url,title:title||h1,h1,meta,text,links,inbound:0,role:UTIL.test(new URL(url).pathname)?'utility':null};
+}
+
+// ---------- similarity (TF-IDF over title, H1, slug, meta) ----------
+const STOP=new Set('the and for with your you are how what why our from this that into can will best more all its not use using get about when who new than out one top guide tips ways'.split(' '));
+function toks(p){const slug=new URL(p.url).pathname.replace(/[\/\-_]+/g,' ');return (p.title+' '+p.h1+' '+slug+' '+p.meta).toLowerCase().match(/[a-z0-9]{3,}/g)?.filter(w=>!STOP.has(w))||[]}
+function candidates(list){
+  const df=new Map(),vec=new Map(),idx=new Map(),N=list.length;
+  list.forEach(p=>{new Set(toks(p)).forEach(w=>df.set(w,(df.get(w)||0)+1))});
+  list.forEach(p=>{const tf=new Map();toks(p).forEach(w=>tf.set(w,(tf.get(w)||0)+1));let n=0;const v=new Map();
+    tf.forEach((c,w)=>{const x=c*Math.log(1+N/df.get(w));v.set(w,x);n+=x*x});n=Math.sqrt(n)||1;v.forEach((x,w)=>v.set(w,x/n));vec.set(p.url,v);
+    v.forEach((x,w)=>{if(!idx.has(w))idx.set(w,[]);idx.get(w).push([p.url,x])})});
+  const pairs=[];
+  list.forEach(p=>{const sc=new Map();vec.get(p.url).forEach((x,w)=>{if(df.get(w)>N*0.4)return;idx.get(w).forEach(([u,y])=>{if(u!==p.url)sc.set(u,(sc.get(u)||0)+x*y)})});
+    [...sc].filter(([u,s])=>s>0.08&&!p.links.has(u)).sort((a,b)=>b[1]-a[1]).slice(0,K).forEach(([u])=>pairs.push([p,pages.get(u)]))});
+  return pairs;
+}
+
+// ---------- Jev ----------
+async function jev(state,questions,key,attempt=0){
+  calls++;$('reqs').textContent=calls.toLocaleString()+' calls';
+  const r=await fetch('https://openrouter.ai/api/alpha/decisions',{method:'POST',headers:{'Authorization':'Bearer '+key,'Content-Type':'application/json','X-Title':'Internal Link Audit'},
+    body:JSON.stringify({model:'typesafe/jev-1.13',state,questions})});
+  if((r.status===429||r.status>=500)&&attempt<5){await new Promise(z=>setTimeout(z,400*2**attempt+Math.random()*300));return jev(state,questions,key,attempt+1)}
+  const j=await r.json();if(!r.ok){if([401,402,403].includes(r.status))fatal=(r.status==402?'Out of OpenRouter credit. Top up at openrouter.ai/settings/credits':'OpenRouter rejected the key ('+(j.error?.message||r.status)+'). Paste your sk-or- key again.');throw new Error(j.error?.message||r.status)}
+  cost+=j.usage?.cost||0;tokIn+=j.usage?.input_tokens||0;return j.answers;
+}
+const RUBRIC=`Internal linking rubric (hub-and-spoke SEO best practice): add a contextual link only when a reader of the SOURCE page would genuinely benefit from the TARGET page and the topics are closely related. Supporting articles should link up to their pillar or service page. Pillar pages should link down to their supporting articles and industry pages. Prioritise targets that have few internal links pointing to them (orphans). Anchor text must be descriptive and keyword-rich, never "click here". Never force links between unrelated topics.`;
+const ROLEQ={role:{type:'choice',instructions:'What type of page is this?',criteria:{
+  pillar:'Core service, product or solution page the business wants to rank and convert on',
+  industry:'Industry, location or use-case landing page',
+  article:'Blog post, tip, how-to, case study or news article',
+  other:'Anything else: about, team, careers, events, generic page'}}};
+async function pool(items,n,fn){let i=0;await Promise.all(Array.from({length:n},async()=>{while(i<items.length&&!fatal){const it=items[i++];try{await fn(it)}catch(e){console.error(e);$('msg').innerHTML='<span class="err">'+e.message+'</span>'}}}))}
+
+// ---------- UI ----------
+function tick(){$('clock').textContent=((performance.now()-t0)/1000).toFixed(2).padStart(5,'0')+'s'}
+function fmt$(c){return '$'+(c<1?c.toFixed(3):c.toFixed(2))}
+function money(){$('cost').textContent=fmt$(cost);$('opus').textContent='$'+(tokIn/1e6*4+decisions*40/1e6*20).toFixed(2)}
+function phase(t){$('stxt').textContent=t;$('phase').textContent=t}
+function short(u){return decodeURI(new URL(u).pathname)}
+
+$('go').onclick=async()=>{
+  const key=$('key').value.trim();let start=$('url').value.trim();
+  if(!start||!key){$('msg').textContent='add the website and your key';return}
+  if(!/^sk-or-/.test(key)){$('msg').innerHTML='<span class="err">That doesn\'t look like an OpenRouter key. It should start with sk-or-</span>';return}
+  fatal=null;
+  if(!/^https?:/.test(start))start='https://'+start;
+  try{localStorage.setItem('or_key',key)}catch(e){}
+  $('ctrl').classList.add('hide');
+  t0=performance.now();timer=setInterval(tick,40);$('status').className='pill run';
+
+  calls=0;cost=0;tokIn=0;decisions=0;placed.length=0;$('feed').innerHTML='';
+  if(!pages.size){
+  // 1. discover
+  phase('finding pages');
+  let home;try{home=(await get(start)).final}catch(e){home=start}
+  const origin=new URL(home).origin;host=new URL(home).hostname.replace(/^www\./,'');
+  $('h1').textContent='Internal link audit, '+host;
+  let urls=(await sitemapUrls(origin)).filter(u=>new URL(u).hostname===host&&!FILE.test(u));
+  if(!urls.length)urls=[norm(home)];
+  urls=urls.slice(0,MAX_PAGES);
+  $('ofPages').textContent=' / '+urls.length+' pages';
+
+  // 2. read every page
+  phase('reading pages');let read=0;
+  await pool(urls,PAGE_CONC,async u=>{const r=await get(u);const p=parsePage(u,r.text);pages.set(u,p);read++;
+    $('bigPages').firstChild.textContent=read;$('prog').style.width=(read/urls.length*100)+'%';$('nRead').textContent=read+' read';log('read '+short(u))});
+  pages.forEach(p=>p.links.forEach(l=>{const t=pages.get(l);if(t)t.inbound++}));
+  }
+  const live=[...pages.values()].filter(p=>p.role!=='utility');
+  $('rUtil').textContent=pages.size-live.length;
+  const orphans=new Set(live.filter(p=>p.inbound===0).map(p=>p.url));
+  $('oBeforeT').textContent='before · '+orphans.size;$('oBefore').style.width=(orphans.size/live.length*100)+'%';
+  $('oAfterT').textContent='after · '+orphans.size;$('oAfter').style.width=(orphans.size/live.length*100)+'%';
+
+  // 3. Jev classifies every page
+  phase('classifying pages');const rc={pillar:0,industry:0,article:0,other:0};
+  await pool(live,JEV_CONC,async p=>{const a=await jev(`Website: ${host}\nPage: ${p.title}\nH1: ${p.h1}\nURL: ${short(p.url)}\nMeta: ${p.meta}\nContent: ${p.text.slice(0,300)}`,ROLEQ,key);
+    p.role=a.role.choice;rc[p.role]++;$('rPillar').textContent=rc.pillar;$('rIndustry').textContent=rc.industry;$('rArticle').textContent=rc.article+rc.other;money()});
+
+  if(fatal){stop();return}
+  // 4. Jev decides every candidate link
+  const pairs=candidates(live);phase('deciding '+pairs.length.toLocaleString()+' links');
+  const fixed=new Set();let done=0;
+  await pool(pairs,JEV_CONC,async([s,t])=>{
+    const opts=[...new Set([t.h1,t.title,short(t.url).split('/').filter(Boolean).pop()?.replace(/-/g,' ')].filter(x=>x&&x.length>3&&x.length<90))];
+    const anchors={};opts.forEach((o,i)=>anchors['a'+i]=o);
+    const q={link:{type:'noul',instructions:'Should the SOURCE page contain a contextual internal link to the TARGET page?'}};
+    if(opts.length>1)q.anchor={type:'choice',instructions:'Which anchor text is the best descriptive, keyword-rich anchor for this link?',criteria:anchors};
+    const a=await jev(`${RUBRIC}\n\nWebsite: ${host}\nSOURCE (${s.role} page): ${s.title}\nH1: ${s.h1}\nContent: ${s.text.slice(0,400)}\n\nTARGET (${t.role} page): ${t.title}\nH1: ${t.h1}\nURL: ${short(t.url)}\nMeta: ${t.meta}\nThe target currently has ${t.inbound} contextual internal links pointing to it.`,q,key);
+    decisions++;done++;$('nDec').textContent=decisions.toLocaleString();money();
+    const p=a.link?.noul??0;
+    if(p>=ACCEPT){const anchor=opts.length>1?anchors[a.anchor.choice]:opts[0]||t.title;placed.push({from:s.url,to:t.url,anchor,p});
+      if(orphans.has(t.url)&&!fixed.has(t.url)){fixed.add(t.url);$('nOrph').textContent=fixed.size;const left=orphans.size-fixed.size;$('oAfterT').textContent='after · '+left;$('oAfter').style.width=(left/live.length*100)+'%'}
+      $('nLinks').textContent=placed.length.toLocaleString();
+      const d=document.createElement('div');d.innerHTML=`<span class="a">${anchor.replace(/</g,'&lt;')}</span> <span class="arr">·</span> ${short(s.url)} <span class="arr">→</span> ${short(t.url)} <span class="p">${p.toFixed(2)}</span>`;
+      const f=$('feed');f.prepend(d);if(f.children.length>26)f.lastChild.remove()}
+    $('prog').style.width=(done/pairs.length*100)+'%'});
+
+  if(fatal){stop();return}
+  clearInterval(timer);tick();$('status').className='pill done';
+  phase('done · '+placed.length+' links placed');$('after').classList.remove('hide');
+};
+function stop(){if(pages.size)$('go').textContent='Retry (skips re-reading)';clearInterval(timer);$('status').className='pill';phase('stopped');$('ctrl').classList.remove('hide');$('msg').innerHTML='<span class="err">'+fatal+'</span>'}
+$('dl').onclick=()=>{
+  const esc=s=>'"'+String(s).replace(/"/g,'""')+'"';
+  const csv='source_page,target_page,anchor_text,jev_confidence\n'+placed.sort((a,b)=>b.p-a.p).map(r=>[r.from,r.to,r.anchor,r.p.toFixed(2)].map(esc).join(',')).join('\n');
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download=host+'-internal-link-plan.csv';a.click();
+};
+</script>
+</body>
+</html>

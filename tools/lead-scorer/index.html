@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lead X-Ray · Jev</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&family=Inter+Tight:wght@600;800&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#f4f1ea;--ink:#111;--mute:#8a857a;--line:#d8d3c7;--card:#fbfaf6;--hot:#e5484d;--warm:#f5a524;--cold:#8fa3b8;--jev:#2f5cff}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px}
+  .wrap{max-width:1180px;margin:0 auto;padding:22px 16px 40px}
+  header{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;border-bottom:2px solid var(--ink);padding-bottom:10px}
+  h1{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:30px;letter-spacing:-.02em;margin:0}
+  h1 span{color:var(--jev)}
+  .sub{color:var(--mute);font-size:11px;text-transform:uppercase;letter-spacing:.08em;margin-top:4px}
+  .pill{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--ink);padding:4px 10px;border-radius:99px;font-size:11px;text-transform:uppercase}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--mute)}
+  .run .dot{background:var(--hot);animation:bl 1s infinite} .done .dot{background:#2bb673}
+  @keyframes bl{50%{opacity:.2}}
+  .tiles{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin:14px 0}
+  .tile{border:1.5px solid var(--ink);background:var(--card);padding:8px 10px}
+  .tile.dark{background:var(--ink);color:var(--bg)}
+  .tile .k{font-size:9px;text-transform:uppercase;letter-spacing:.1em;opacity:.7}
+  .tile .v{font-size:28px;font-weight:800;margin-top:4px;font-variant-numeric:tabular-nums}
+  .tile .s{font-size:10px;opacity:.6}
+  .grid{display:grid;grid-template-columns:2.2fr 1fr;gap:10px}
+  .panel{border:1.5px solid var(--ink);background:var(--card)}
+  .ph{display:flex;justify-content:space-between;padding:6px 10px;border-bottom:1px solid var(--line);font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--mute)}
+  .tbl{height:520px;overflow:hidden;position:relative}
+  table{width:100%;border-collapse:collapse}
+  td{padding:5px 10px;border-bottom:1px dashed var(--line);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:220px}
+  tr.new{animation:fl .6s ease-out}
+  @keyframes fl{from{background:#fff3b0}to{background:transparent}}
+  .tag{display:inline-block;padding:1px 7px;border-radius:3px;font-weight:700;font-size:10px;color:#fff}
+  .t-hot{background:var(--hot)}.t-warm{background:var(--warm)}.t-cold{background:var(--cold)}
+  .bar{height:6px;background:var(--line);width:90px;display:inline-block;vertical-align:middle}
+  .bar i{display:block;height:100%;background:var(--ink)}
+  .conf{color:var(--mute)}
+  .side{display:flex;flex-direction:column;gap:10px}
+  .funnel{padding:12px 10px}
+  .frow{display:flex;align-items:center;gap:8px;margin:8px 0}
+  .frow b{width:44px;font-size:10px;text-transform:uppercase}
+  .ftrack{flex:1;height:22px;background:var(--line);position:relative}
+  .ftrack i{position:absolute;inset:0 auto 0 0;transition:width .15s linear}
+  .frow span{width:40px;text-align:right;font-weight:700}
+  .feed{height:300px;overflow:hidden;padding:6px 10px;font-size:10.5px;line-height:1.6;background:#0e0e0e;color:#cfe3ff}
+  .feed .hot{color:#ff8a8d}.feed .warm{color:#ffd27a}.feed .cold{color:#9fb0c2}
+  .ctrl{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:14px}
+  input,button{font-family:inherit;font-size:12px;border:1.5px solid var(--ink);background:var(--card);padding:8px 10px}
+  input[type=password]{width:300px}
+  button{background:var(--ink);color:var(--bg);cursor:pointer;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+  button.ghost{background:var(--card);color:var(--ink)}
+  .err{color:var(--hot)}
+  .hide{display:none!important}
+  .badge{display:inline-block;background:var(--warm);color:#111;font-weight:800;padding:2px 8px;margin-right:8px;letter-spacing:.06em}
+  .badge.own{background:#2bb673;color:#fff}
+  .setup{margin-top:14px;border:1.5px solid var(--ink);background:var(--card);padding:12px;display:grid;gap:8px}
+  .setup label{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--mute)}
+  textarea{font-family:inherit;font-size:12px;border:1.5px solid var(--ink);background:#fff;padding:8px;min-height:64px;width:100%;resize:vertical}
+  .back{color:var(--ink);font-size:11px}
+  .note{font-size:10.5px;color:var(--mute)}
+  @media(max-width:860px){.tiles{grid-template-columns:repeat(3,1fr)}.grid{grid-template-columns:1fr}input[type=password]{width:100%}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>Lead X-Ray · <span>JEV</span></h1>
+      <div class="sub"><span class="badge" id="badge">SAMPLE LIST</span><span id="sub">700 made-up prospects · who to call first · typesafe/jev-1.13</span></div>
+    </div>
+    <div class="pill" id="status"><span class="dot"></span><span id="stxt">ready</span></div>
+  </header>
+  <div id="ctrl">
+    <div class="setup">
+      <label for="icp">1 · Your ideal customer (Jev scores every lead against this)</label>
+      <textarea id="icp"></textarea>
+      <label>2 · Your leads</label>
+      <div class="ctrl" style="margin:0">
+        <button class="ghost" id="csvBtn">Upload my CSV</button>
+        <button class="ghost" id="tplBtn">Download CSV template</button>
+        <input type="file" id="csv" accept=".csv" class="hide">
+        <span class="note">Columns: name, title, company, industry, size, city, signal. Or leave it and run the sample list.</span>
+      </div>
+      <label for="key">3 · Your OpenRouter key</label>
+      <div class="ctrl" style="margin:0">
+        <input type="password" id="key" placeholder="OpenRouter API key (sk-or-...)">
+        <button id="go">Score leads</button>
+        <span id="msg" class="conf"></span>
+      </div>
+      <span class="note">Your key and your leads stay in your browser. Every call goes straight to OpenRouter. 700 leads cost about 2 cents.</span>
+    </div>
+    <p><a class="back" href="../../">← back to the Jev playbook</a></p>
+  </div>
+  <div class="ctrl hide" id="after">
+    <button id="dlRes">Download scored leads (CSV)</button>
+    <button class="ghost" onclick="location.reload()">Run again</button>
+  </div>
+
+  <div class="tiles">
+    <div class="tile dark"><div class="k">Leads scored</div><div class="v" id="nScored">0</div><div class="s" id="nTotal">of 700</div></div>
+    <div class="tile"><div class="k">Hot · call today</div><div class="v" id="nHot" style="color:var(--hot)">0</div><div class="s">ICP fit + buying signal</div></div>
+    <div class="tile"><div class="k">Warm · nurture</div><div class="v" id="nWarm">0</div><div class="s">fit, no signal yet</div></div>
+    <div class="tile"><div class="k">Cold · skip</div><div class="v" id="nCold">0</div><div class="s">not your buyer</div></div>
+    <div class="tile"><div class="k">Elapsed</div><div class="v" id="tEl">0.0s</div><div class="s" id="rate">0 / sec</div></div>
+    <div class="tile dark"><div class="k">Jev cost</div><div class="v" id="cost">$0.000</div><div class="s" id="tok">0 tokens in</div></div>
+  </div>
+
+  <div class="grid">
+    <div class="panel">
+      <div class="ph"><span>Prospect</span><span>Verdict · score · confidence</span></div>
+      <div class="tbl"><table><tbody id="rows"></tbody></table></div>
+    </div>
+    <div class="side">
+      <div class="panel">
+        <div class="ph"><span>Pipeline</span><span id="pct">0%</span></div>
+        <div class="funnel">
+          <div class="frow"><b>Hot</b><div class="ftrack"><i id="fHot" style="background:var(--hot);width:0"></i></div><span id="pHot">0%</span></div>
+          <div class="frow"><b>Warm</b><div class="ftrack"><i id="fWarm" style="background:var(--warm);width:0"></i></div><span id="pWarm">0%</span></div>
+          <div class="frow"><b>Cold</b><div class="ftrack"><i id="fCold" style="background:var(--cold);width:0"></i></div><span id="pCold">0%</span></div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="ph"><span>jev.decisions · live</span><span id="reqs">0 calls</span></div>
+        <div class="feed" id="feed"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const ICP_DEFAULT = "We sell an AI marketing and sales automation service to B2B companies. Ideal customer: a marketing, growth, sales or revenue leader (Head/Director/VP/CMO/CRO/Founder) at a B2B SaaS, agency, fintech or professional services company with 20 to 500 employees. Strong buying signals: recently raised funding, hiring SDRs or marketers, launching in a new market, new leader in seat, or complaining about pipeline or lead quality.";
+
+// ---------- prospect list ----------
+function rng(seed){return()=>{seed=(seed*1664525+1013904223)%4294967296;return seed/4294967296}}
+const r=rng(42), pick=a=>a[Math.floor(r()*a.length)];
+const FN=["Aisha","Rohan","Priya","Omar","Sara","Karan","Lena","Arjun","Maya","Ravi","Noor","Dev","Hana","Vikram","Zara","Tom","Fatima","Nikhil","Chloe","Yusuf","Meera","Sam","Leila","Aditya","Emma","Kabir","Nadia","Jai","Ines","Ali"];
+const LN=["Khan","Mehta","Shah","Rahman","Iyer","Patel","Haddad","Kapoor","Nair","Silva","Mansour","Rao","Fischer","Gupta","Qureshi","Das","Hughes","Saleh","Menon","Varma"];
+const TITLES=[["Head of Growth",3],["VP Marketing",3],["CMO",3],["Founder & CEO",3],["Director of Sales",3],["CRO",3],["Marketing Manager",2],["SDR Team Lead",2],["Demand Gen Lead",2],["HR Business Partner",0],["Software Engineer",0],["Finance Controller",0],["Office Manager",0],["IT Administrator",0],["Product Designer",0],["Procurement Analyst",0]];
+const INDS=[["B2B SaaS",3],["Marketing agency",3],["Fintech",2],["Consulting firm",2],["E-commerce brand",1],["Logistics",1],["Restaurant group",0],["School",0],["Hospital",0],["Government dept",0]];
+const SIZES=["8","15","35","60","120","250","400","900","2,500","12,000"];
+const CITIES=["Dubai","Bengaluru","Mumbai","Riyadh","London","Abu Dhabi","Pune","Doha","Singapore","Delhi"];
+const SIG=["Raised Series A last month","Hiring 4 SDRs on LinkedIn","Posted: 'our pipeline is dry this quarter'","New CMO started 3 weeks ago","Launching in Saudi next quarter","Downloaded a lead-gen report","Hiring a performance marketer","Complained about lead quality on LinkedIn","","","","","","","Company announced layoffs","No activity in 6 months","Just renewed a 3-year HubSpot contract",""];
+const CO1=["Nimbus","Kestrel","Orbit","Saffron","Lumen","Atlas","Pivot","Cobalt","Mosaic","Harbor","Vertex","Juniper","Falcon","Ember","Quill","Zenith","Tidal","Anchor","Beacon","Nova"];
+const CO2=["Labs","Studio","Pay","Health","Works","Cloud","Partners","Media","HQ","Systems"];
+function makeLeads(n){const out=[];for(let i=0;i<n;i++){const t=pick(TITLES),ind=pick(INDS);out.push({name:pick(FN)+" "+pick(LN),title:t[0],company:pick(CO1)+" "+pick(CO2),industry:ind[0],size:pick(SIZES),city:pick(CITIES),signal:pick(SIG)})}return out}
+let LEADS=makeLeads(700);
+document.getElementById('icp').value=ICP_DEFAULT;
+
+// ---------- CSV (optional) ----------
+function parseCSV(t){const out=[];let row=[],f='',q=false;for(let i=0;i<t.length;i++){const ch=t[i];
+  if(q){if(ch=='"'){if(t[i+1]=='"'){f+='"';i++}else q=false}else f+=ch}
+  else if(ch=='"')q=true;else if(ch==','){row.push(f);f=''}else if(ch=='\n'||ch=='\r'){if(ch=='\r'&&t[i+1]=='\n')i++;row.push(f);out.push(row);row=[];f=''}else f+=ch}
+  if(f||row.length){row.push(f);out.push(row)}return out}
+const esc=v=>'"'+String(v??'').replace(/"/g,'""')+'"';
+function download(name,text){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:'text/csv'}));a.download=name;a.click()}
+document.getElementById('tplBtn').onclick=()=>download('lead-template.csv','name,title,company,industry,size,city,signal\n"Aisha Khan","VP Marketing","Nimbus Labs","B2B SaaS","120","Dubai","Hiring 4 SDRs on LinkedIn"\n');
+const RESULTS=[];
+document.getElementById('csvBtn').onclick=()=>document.getElementById('csv').click();
+document.getElementById('csv').onchange=async e=>{
+  const rows=parseCSV(await e.target.files[0].text()).filter(r=>r.some(c=>c.trim()));
+  const head=rows.shift().map(h=>h.trim().toLowerCase());
+  LEADS=rows.map(c=>{const o={};head.forEach((h,i)=>o[h]=(c[i]||'').trim());
+    return {name:o.name||o['full name']||o['first name']||'—',title:o.title||o['job title']||'',company:o.company||o['company name']||'',industry:o.industry||'',size:o.size||o.employees||'',city:o.city||o.location||'',signal:o.signal||o.notes||'',raw:head.map((h,i)=>h+': '+(c[i]||'')).join('; ')}});
+  document.getElementById('nTotal').textContent='of '+LEADS.length;
+  document.getElementById('badge').textContent='YOUR LIST';document.getElementById('badge').className='badge own';
+  document.getElementById('sub').textContent=LEADS.length+' prospects · who to call first · typesafe/jev-1.13';
+  document.getElementById('msg').textContent=LEADS.length+' rows loaded';
+};
+
+// ---------- Jev ----------
+const keyEl=document.getElementById('key');
+try{keyEl.value=localStorage.getItem('or_key')||''}catch(e){}
+function leadState(l){return `Our ideal customer profile: ${document.getElementById('icp').value}\n\nProspect: ${l.name}, ${l.title} at ${l.company} (${l.industry}, ${l.size} employees, ${l.city}).${l.signal?' Recent activity: '+l.signal+'.':''}${l.raw?' Raw row: '+l.raw:''}`}
+const QUESTIONS={
+  tier:{type:"choice",instructions:"How should our sales team prioritise this prospect?",criteria:{
+    hot:"Strong ICP fit (right role, right company type and size) AND a clear recent buying signal. Call today.",
+    warm:"Reasonable ICP fit but no clear buying signal yet. Nurture.",
+    cold:"Wrong role, wrong company type or size, or a negative signal. Skip."}},
+  signal:{type:"noul",instructions:"Is there evidence this prospect is actively looking to grow pipeline or marketing right now?"}
+};
+async function decide(l,key,attempt=0){
+  const res=await fetch('https://openrouter.ai/api/alpha/decisions',{method:'POST',
+    headers:{'Authorization':'Bearer '+key,'Content-Type':'application/json','X-Title':'Lead X-Ray'},
+    body:JSON.stringify({model:'typesafe/jev-1.13',state:leadState(l),questions:QUESTIONS})});
+  if((res.status===429||res.status>=500)&&attempt<5){await new Promise(z=>setTimeout(z,400*2**attempt+Math.random()*300));return decide(l,key,attempt+1)}
+  const j=await res.json();
+  if(!res.ok) throw new Error(j.error?.message||res.status);
+  return j;
+}
+
+// ---------- UI ----------
+const $=id=>document.getElementById(id);
+let st={done:0,hot:0,warm:0,cold:0,cost:0,tok:0,calls:0,t0:0,timer:null};
+function fmtCost(c){return '$'+(c<0.1?c.toFixed(4):c.toFixed(3))}
+function tick(){const s=(performance.now()-st.t0)/1000;$('tEl').textContent=s.toFixed(1)+'s';$('rate').textContent=(st.done/Math.max(s,.01)).toFixed(1)+' / sec'}
+function render(l,a,usage){
+  const tier=a.tier.choice, p=a.tier.probabilities, score=Math.round(((p.hot||0)+0.5*(p.warm||0))*100), conf=Math.round((a.tier.confidence||0)*100);
+  RESULTS.push({...l,tier,score,conf,signal:(a.signal?.noul??0).toFixed(2)});
+  st.done++;st[tier]++;st.cost+=usage?.cost||0;st.tok+=usage?.input_tokens||0;
+  const tr=document.createElement('tr');tr.className='new';
+  tr.innerHTML=`<td><b>${l.name}</b> · ${l.title}</td><td>${l.company}</td><td><span class="tag t-${tier}">${tier.toUpperCase()}</span></td><td><span class="bar"><i style="width:${score}%"></i></span> ${score}</td><td class="conf">${conf}% sure</td>`;
+  const rows=$('rows');rows.prepend(tr);if(rows.children.length>40)rows.lastChild.remove();
+  const f=$('feed'),line=document.createElement('div');
+  line.innerHTML=`<span class="${tier}">{"tier":"${tier}","p":${(p[tier]||0).toFixed(2)},"signal":${(a.signal?.noul??0).toFixed(2)}}</span> ${l.company}`;
+  f.prepend(line);if(f.children.length>30)f.lastChild.remove();
+  $('nScored').textContent=st.done;$('nHot').textContent=st.hot;$('nWarm').textContent=st.warm;$('nCold').textContent=st.cold;
+  $('cost').textContent=fmtCost(st.cost);$('tok').textContent=st.tok.toLocaleString()+' tokens in';
+  const n=LEADS.length;$('pct').textContent=Math.round(st.done/n*100)+'%';
+  for(const k of['hot','warm','cold']){const K=k[0].toUpperCase()+k.slice(1),pc=st.done?st[k]/st.done*100:0;$('f'+K).style.width=pc+'%';$('p'+K).textContent=Math.round(pc)+'%'}
+}
+$('go').onclick=async()=>{
+  const key=keyEl.value.trim(); if(!key){$('msg').textContent='add your OpenRouter key';return}
+  try{localStorage.setItem('or_key',key)}catch(e){}
+  $('ctrl').classList.add('hide');
+  st={done:0,hot:0,warm:0,cold:0,cost:0,tok:0,calls:0,t0:performance.now(),timer:null};
+  $('status').className='pill run';$('stxt').textContent='scoring';
+  st.timer=setInterval(tick,50);
+  let i=0,errs=0;const CONC=48;
+  async function worker(){while(i<LEADS.length){const l=LEADS[i++];st.calls++;$('reqs').textContent=st.calls+' calls';
+    try{const j=await decide(l,key);render(l,j.answers,j.usage)}catch(e){errs++;console.error(e);if(errs===1){$('msg').innerHTML='<span class="err">'+e.message+'</span>'}}}}
+  await Promise.all(Array.from({length:CONC},worker));
+  clearInterval(st.timer);tick();
+  $('status').className='pill done';$('stxt').textContent='done · '+st.hot+' to call today';
+  $('after').classList.remove('hide');
+  if(errs){$('ctrl').classList.remove('hide');$('msg').innerHTML='<span class="err">'+errs+' failed</span>'}
+};
+$('dlRes').onclick=()=>download('scored-leads.csv','name,title,company,verdict,score,jev_confidence,buying_signal\n'+RESULTS.sort((a,b)=>b.score-a.score).map(r=>[r.name,r.title,r.company,r.tier,r.score,r.conf+'%',r.signal].map(esc).join(',')).join('\n'));
+</script>
+</body>
+</html>
