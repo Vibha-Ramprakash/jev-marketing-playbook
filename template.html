@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Jev Playbook for Marketers</title>
-<meta name="description" content="8 copy-paste prompts to use Jev, TypeSafe's decision model, for lead scoring, SEO, ads, content and sales. Plus 2 free tools. By @vibha.in.progress">
+<meta name="description" content="14 copy-paste prompts to use Jev, TypeSafe's decision model, for lead scoring, SEO, ads, content and sales, including 6 new ones for Jev 1.14 (images, Box, long context, multilingual). Plus 2 free tools. By @vibha.in.progress">
 <meta property="og:title" content="Jev Playbook for Marketers">
-<meta property="og:description" content="8 copy-paste Jev prompts + 2 free tools for marketers, founders and sales teams.">
+<meta property="og:description" content="14 copy-paste Jev prompts + 2 free tools for marketers, founders and sales teams. Updated for Jev 1.14.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
@@ -56,7 +56,10 @@
   .case h2{margin:6px 0 2px}
   .who{margin:0;color:var(--mute);font-size:14px}
   .tag{font:600 10.5px 'JetBrains Mono';text-transform:uppercase;letter-spacing:.08em;padding:3px 8px;border-radius:3px}
-  .t-built{background:var(--ink);color:var(--bg)} .t-comm{background:var(--jev);color:#fff} .t-idea{background:var(--warm);color:#141414}
+  .t-built{background:var(--ink);color:var(--bg)} .t-comm{background:var(--jev);color:#fff} .t-idea{background:var(--warm);color:#141414} .t-new{background:var(--hot);color:#fff}
+  .four{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:20px}
+  #new114{background:var(--card);margin:0 -20px;padding-left:20px;padding-right:20px;border-top:2px solid var(--ink)}
+  #new114 .box{background:var(--bg)}
   .what{font-size:18px;max-width:720px;margin:16px 0 14px}
   .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
   .chip{font:600 12.5px 'JetBrains Mono';border:1.5px solid var(--ink);padding:4px 10px;background:var(--card)}
@@ -68,15 +71,15 @@
   .limits ul{color:var(--soft)}
   footer{padding:48px 0 64px;text-align:center;color:var(--mute);font-size:14px}
   footer b{color:var(--ink);font-family:'Inter Tight';font-size:22px;display:block;margin-bottom:6px}
-  @media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}.three,.vs,.cols{grid-template-columns:1fr}.num{font-size:32px;min-width:44px}header.hero{padding-top:40px}}
+  @media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}.three,.vs,.cols,.four{grid-template-columns:1fr}.num{font-size:32px;min-width:44px}header.hero{padding-top:40px}}
 </style>
 </head>
 <body>
 
 <header class="hero wrap">
-  <div class="kick">The Jev playbook · by @vibha.in.progress</div>
-  <h1>8 things marketers can hand to <span>Jev</span> today</h1>
-  <p class="lede">Jev is a new AI model that doesn't write a single word. It just decides. Here are 8 copy-paste prompts for sales, SEO, ads and content, plus 2 free tools I built with it.</p>
+  <div class="kick">The Jev playbook · v2 · updated for Jev 1.14 · by @vibha.in.progress</div>
+  <h1>14 things marketers can hand to <span>Jev</span> today</h1>
+  <p class="lede">Jev is a new AI model that doesn't write a single word. It just decides. Here are 14 copy-paste prompts for sales, SEO, ads and content: the original 8, plus 6 new ones for Jev 1.14, which opens up images. Plus 2 free tools I built with it.</p>
   <div class="stats">
     <div class="stat dark"><b>700</b><span>leads scored</span></div>
     <div class="stat"><b>8.9s</b><span>start to finish</span></div>
@@ -127,6 +130,7 @@
     <li><b>It's not always right.</b> Check 20 answers by hand before you trust it on your whole list, and look at the low-confidence ones first.</li>
     <li><b>It's bad at rules.</b> Maths, dates, "sort by revenue". That's still a spreadsheet job.</li>
     <li><b>It only decides.</b> Anything that needs writing goes to Claude.</li>
+    <li><b>The 1.14 features are early.</b> Images, Box and long context are opt-in, and TypeSafe itself says they aren't production-ready. Image answers are less accurate than text answers. Treat builds 09 to 14 as drafts you check, not systems you trust.</li>
     <li><b>It drafts, you approve.</b> Nothing in this playbook should email, post or change your site without you looking first.</li>
     <li><b>Keep keys private.</b> Never paste your key into a file you share. If you ever do, delete it at openrouter.ai and make a new one.</li>
   </ul>
@@ -142,10 +146,10 @@
 </footer>
 
 <script>
-const STARTER=document.getElementById('starter').textContent;
 document.querySelectorAll('button.copy').forEach(b=>b.addEventListener('click',async()=>{
   const body=document.getElementById(b.dataset.for).textContent;
-  const text=b.dataset.raw?body:STARTER+'\n\n---\n\n'+body;
+  const starter=document.getElementById(b.dataset.starter||'starter').textContent;
+  const text=b.dataset.raw?body:starter+'\n\n---\n\n'+body;
   try{await navigator.clipboard.writeText(text)}catch(e){const t=document.createElement('textarea');t.value=text;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove()}
   const old=b.textContent;b.textContent='Copied ✓';b.classList.add('done');setTimeout(()=>{b.textContent=old;b.classList.remove('done')},1600);
 }));

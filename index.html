@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Jev Playbook for Marketers</title>
-<meta name="description" content="8 copy-paste prompts to use Jev, TypeSafe's decision model, for lead scoring, SEO, ads, content and sales. Plus 2 free tools. By @vibha.in.progress">
+<meta name="description" content="14 copy-paste prompts to use Jev, TypeSafe's decision model, for lead scoring, SEO, ads, content and sales, including 6 new ones for Jev 1.14 (images, Box, long context, multilingual). Plus 2 free tools. By @vibha.in.progress">
 <meta property="og:title" content="Jev Playbook for Marketers">
-<meta property="og:description" content="8 copy-paste Jev prompts + 2 free tools for marketers, founders and sales teams.">
+<meta property="og:description" content="14 copy-paste Jev prompts + 2 free tools for marketers, founders and sales teams. Updated for Jev 1.14.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
@@ -56,7 +56,10 @@
   .case h2{margin:6px 0 2px}
   .who{margin:0;color:var(--mute);font-size:14px}
   .tag{font:600 10.5px 'JetBrains Mono';text-transform:uppercase;letter-spacing:.08em;padding:3px 8px;border-radius:3px}
-  .t-built{background:var(--ink);color:var(--bg)} .t-comm{background:var(--jev);color:#fff} .t-idea{background:var(--warm);color:#141414}
+  .t-built{background:var(--ink);color:var(--bg)} .t-comm{background:var(--jev);color:#fff} .t-idea{background:var(--warm);color:#141414} .t-new{background:var(--hot);color:#fff}
+  .four{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:20px}
+  #new114{background:var(--card);margin:0 -20px;padding-left:20px;padding-right:20px;border-top:2px solid var(--ink)}
+  #new114 .box{background:var(--bg)}
   .what{font-size:18px;max-width:720px;margin:16px 0 14px}
   .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
   .chip{font:600 12.5px 'JetBrains Mono';border:1.5px solid var(--ink);padding:4px 10px;background:var(--card)}
@@ -68,15 +71,15 @@
   .limits ul{color:var(--soft)}
   footer{padding:48px 0 64px;text-align:center;color:var(--mute);font-size:14px}
   footer b{color:var(--ink);font-family:'Inter Tight';font-size:22px;display:block;margin-bottom:6px}
-  @media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}.three,.vs,.cols{grid-template-columns:1fr}.num{font-size:32px;min-width:44px}header.hero{padding-top:40px}}
+  @media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}.three,.vs,.cols,.four{grid-template-columns:1fr}.num{font-size:32px;min-width:44px}header.hero{padding-top:40px}}
 </style>
 </head>
 <body>
 
 <header class="hero wrap">
-  <div class="kick">The Jev playbook · by @vibha.in.progress</div>
-  <h1>8 things marketers can hand to <span>Jev</span> today</h1>
-  <p class="lede">Jev is a new AI model that doesn't write a single word. It just decides. Here are 8 copy-paste prompts for sales, SEO, ads and content, plus 2 free tools I built with it.</p>
+  <div class="kick">The Jev playbook · v2 · updated for Jev 1.14 · by @vibha.in.progress</div>
+  <h1>14 things marketers can hand to <span>Jev</span> today</h1>
+  <p class="lede">Jev is a new AI model that doesn't write a single word. It just decides. Here are 14 copy-paste prompts for sales, SEO, ads and content: the original 8, plus 6 new ones for Jev 1.14, which opens up images. Plus 2 free tools I built with it.</p>
   <div class="stats">
     <div class="stat dark"><b>700</b><span>leads scored</span></div>
     <div class="stat"><b>8.9s</b><span>start to finish</span></div>
@@ -85,7 +88,7 @@
   </div>
 </header>
 
-<nav class="toc"><div class="wrap"><a href="#what">What is Jev</a><a href="#setup">Setup</a><a href="#lead-scoring">01 Lead scoring</a><a href="#link-audit">02 Internal link audit (SEO)</a><a href="#focus-group">03 AI focus group</a><a href="#competitor-ads">04 Competitor ad sorter</a><a href="#comment-triage">05 Instagram comment &amp; DM triage</a><a href="#keyword-intent">06 Keyword intent sorter</a><a href="#visitor-followup">07 Website visitor → best follow-up</a><a href="#hook-analyser">08 Viral hook analyser</a><a href="#limits">Limits</a></div></nav>
+<nav class="toc"><div class="wrap"><a href="#what">What is Jev</a><a href="#setup">Setup</a><a href="#lead-scoring">01 Lead scoring</a><a href="#link-audit">02 Internal link audit (SEO)</a><a href="#focus-group">03 AI focus group</a><a href="#competitor-ads">04 Competitor ad sorter</a><a href="#comment-triage">05 Instagram comment &amp; DM triage</a><a href="#keyword-intent">06 Keyword intent sorter</a><a href="#visitor-followup">07 Website visitor → best follow-up</a><a href="#hook-analyser">08 Viral hook analyser</a><a href="#new114">New in 1.14</a><a href="#ad-gatekeeper">09 Ad creative gatekeeper</a><a href="#ugc-check">10 Creator &amp; UGC brand check</a><a href="#safe-zone">11 Safe-zone &amp; CTA checker</a><a href="#swipe-file">12 Swipe-file sorter</a><a href="#account-risk">13 Account risk read</a><a href="#multilingual-inbox">14 Multilingual inbox triage</a><a href="#limits">Limits</a></div></nav>
 
 <main class="wrap">
 
@@ -147,7 +150,7 @@ Ask me for my OpenRouter key when you need it and never save it in a file I migh
       <p class="honest"><b>Honest bit:</b> Garbage in, garbage out. If your CSV only has names and emails, Jev has nothing to judge. Add a job title, company and any notes you have.</p>
     </div>
     <div class="promptbox">
-      <div class="pb-head"><span>Prompt · paste into Claude or Codex</span><button class="copy" data-for="p-lead-scoring">Copy prompt</button></div>
+      <div class="pb-head"><span>Prompt · paste into Claude or Codex</span><button class="copy" data-for="p-lead-scoring" data-starter="starter">Copy prompt</button></div>
       <pre id="p-lead-scoring">Score my leads with Jev.
 1. Ask me to describe my ideal customer and to upload my lead CSV.
 2. For each lead, ask Jev (choice): hot, warm or cold. Hot = strong fit AND a recent buying signal. Warm = good fit, no signal yet. Cold = wrong role, company or size.
@@ -176,7 +179,7 @@ Ask me for my OpenRouter key when you need it and never save it in a file I migh
       <p class="honest"><b>Honest bit:</b> Jev picks the links, a human still places them. Skim the CSV before anything goes live, especially links to your money pages.</p>
     </div>
     <div class="promptbox">
-      <div class="pb-head"><span>Prompt · paste into Claude or Codex</span><button class="copy" data-for="p-link-audit">Copy prompt</button></div>
+      <div class="pb-head"><span>Prompt · paste into Claude or Codex</span><button class="copy" data-for="p-link-audit" data-starter="starter">Copy prompt</button></div>
       <pre id="p-link-audit">Audit my website&#x27;s internal links with Jev.
 1. Read every page in my sitemap: title, H1, main text and the links already on it.
 2. For each page, find the 6 most related pages it doesn&#x27;t link to yet.
@@ -205,7 +208,7 @@ Ask me for my OpenRouter key when you need it and never save it in a file I migh
       <p class="honest"><b>Honest bit:</b> Personas are a simulation, not real people. Use it to pick what to test, not to skip testing.</p>
     </div>
     <div class="promptbox">
-      <div class="pb-head"><span>Prompt · paste into Claude or Codex</span><button class="copy" data-for="p-focus-group">Copy prompt</button></div>
+      <div class="pb-head"><span>Prompt · paste into Claude or Codex</span><button class="copy" data-for="p-focus-group" data-starter="starter">Copy prompt</button></div>
       <pre id="p-focus-group">Build me an AI focus group with Jev.
 1. Ask me about my product and who buys it. Then write 30 realistic, varied buyer personas (Claude writes these).
 2. Help me collect ads from the Meta Ad Library for the competitors I name (ad text, headline, image description).
@@ -234,7 +237,7 @@ Ask me for my OpenRouter key when you need it and never save it in a file I migh
       <p class="honest"><b>Honest bit:</b> The Ad Library shows what&#x27;s running, not what&#x27;s working. Ads that have been running for a long time are your best clue.</p>
     </div>
     <div class="promptbox">
-      <div class="pb-head"><span>Prompt · paste into Claude or Codex</span><button class="copy" data-for="p-competitor-ads">Copy prompt</button></div>
+      <div class="pb-head"><span>Prompt · paste into Claude or Codex</span><button class="copy" data-for="p-competitor-ads" data-starter="starter">Copy prompt</button></div>
       <pre id="p-competitor-ads">Sort my competitors&#x27; ads with Jev.
 1. Help me collect all active ads for these competitors from the Meta Ad Library: [competitor names]. Get the ad text, headline, call to action and landing page. Ask me before spending money on any scraping tool.
 2. For every ad, ask Jev (choice) the funnel stage: unaware, problem aware, solution aware, product aware or most aware.
@@ -263,7 +266,7 @@ Ask me for my OpenRouter key when you need it and never save it in a file I migh
       <p class="honest"><b>Honest bit:</b> It drafts, you approve. Never let it reply to people on its own.</p>
     </div>
     <div class="promptbox">
-      <div class="pb-head"><span>Prompt · paste into Claude or Codex</span><button class="copy" data-for="p-comment-triage">Copy prompt</button></div>
+      <div class="pb-head"><span>Prompt · paste into Claude or Codex</span><button class="copy" data-for="p-comment-triage" data-starter="starter">Copy prompt</button></div>
       <pre id="p-comment-triage">Triage my Instagram comments and DMs with Jev.
 1. Help me get my recent comments and DMs into a list (a CSV or a paste is fine).
 2. For each one, ask Jev (choice): buyer intent, a question I should answer, fan, collab or brand deal, or spam.
@@ -292,7 +295,7 @@ Ask me for my OpenRouter key when you need it and never save it in a file I migh
       <p class="honest"><b>Honest bit:</b> Jev judges intent from the words alone. For your biggest keywords, still look at what Google actually shows.</p>
     </div>
     <div class="promptbox">
-      <div class="pb-head"><span>Prompt · paste into Claude or Codex</span><button class="copy" data-for="p-keyword-intent">Copy prompt</button></div>
+      <div class="pb-head"><span>Prompt · paste into Claude or Codex</span><button class="copy" data-for="p-keyword-intent" data-starter="starter">Copy prompt</button></div>
       <pre id="p-keyword-intent">Sort my keyword list with Jev.
 1. Ask me for my keyword CSV and one line on what I sell.
 2. For every keyword, ask Jev (choice) the intent: informational, commercial, transactional, navigational or local.
@@ -321,7 +324,7 @@ Ask me for my OpenRouter key when you need it and never save it in a file I migh
       <p class="honest"><b>Honest bit:</b> Only follow up with people who gave you their details. Check your privacy rules before you enrich anyone.</p>
     </div>
     <div class="promptbox">
-      <div class="pb-head"><span>Prompt · paste into Claude or Codex</span><button class="copy" data-for="p-visitor-followup">Copy prompt</button></div>
+      <div class="pb-head"><span>Prompt · paste into Claude or Codex</span><button class="copy" data-for="p-visitor-followup" data-starter="starter">Copy prompt</button></div>
       <pre id="p-visitor-followup">Match my website visitors to the best follow-up email with Jev.
 1. Ask me which analytics and CRM tools I use. Start with a CSV export if that&#x27;s easier.
 2. For each visitor or lead, combine the pages they viewed, where they came from, their company, and whether they&#x27;re already in my CRM.
@@ -350,13 +353,217 @@ Ask me for my OpenRouter key when you need it and never save it in a file I migh
       <p class="honest"><b>Honest bit:</b> Views depend on more than the hook. Treat this as a direction, not a formula.</p>
     </div>
     <div class="promptbox">
-      <div class="pb-head"><span>Prompt · paste into Claude or Codex</span><button class="copy" data-for="p-hook-analyser">Copy prompt</button></div>
+      <div class="pb-head"><span>Prompt · paste into Claude or Codex</span><button class="copy" data-for="p-hook-analyser" data-starter="starter">Copy prompt</button></div>
       <pre id="p-hook-analyser">Analyse the hooks in my niche with Jev.
 1. Help me collect the last 200 posts from these accounts, with views and the first line: [handles]. Ask me before spending money on a scraper.
 2. For each post, ask Jev (choice) the hook type: number, contrarian, how-to, story, question, before and after, or news.
 3. Ask Jev (noul): &quot;Does the first line promise a specific payoff?&quot;
 4. Show me which hook types get the most views on average.
 5. Then have Claude write me 10 hooks for my topic in the top 3 styles.</pre>
+    </div>
+  </div>
+</section>
+<section class="block" id="new114">
+  <div class="kick">New · Jev 1.14 · released 14 Oct 2026 · preview</div>
+  <h2>What changed in Jev 1.14</h2>
+  <p class="lede">With 1.14, TypeSafe opened up image input and added a way to find things in a picture. These 6 builds use that. They're early: I haven't tested them the way I tested the first 2, and TypeSafe says the new features aren't production-ready.</p>
+  <div class="four">
+    <div class="box"><b>📷 Images (early, opt-in)</b><p>Jev can look at a picture and answer yes or no, pick a category or give a score. Ads, creator content and screenshots can be sorted like leads. PNG or JPEG stills only. Documented with this release; per TypeSafe it also works on 1.13.</p></div>
+    <div class="box"><b>📍 Box (new, 1.14 only)</b><p>A new question type: it points to where one thing is in an image (a logo, a button) as four edges plus how sure it is. Layout checks become maths.</p></div>
+    <div class="box"><b>📚 4x the memory (early, opt-in)</b><p>Up to 262K tokens in one request, up from 64K, so a whole account history fits in one go. It's slower and less accurate, so keep inputs short when you can.</p></div>
+    <div class="box"><b>🌍 Better multilingual</b><p>TypeSafe says this is the biggest expected improvement in 1.14. No benchmark has been published yet, so test it on a language you read.</p></div>
+  </div>
+  <p class="honest"><b>Honest bit:</b> same price as before ($0.042 per million input tokens, output free), but images count as input and every reuse of an image is billed again. The default version (jev-latest) was due to move to 1.14 around 21 Oct. These prompts pin <span class="mono">typesafe/jev-1.14</span> so they keep working either way.</p>
+  <div class="promptbox" style="margin-top:18px">
+    <div class="pb-head"><span>Setup text for the 6 new builds (included in their copy buttons)</span><button class="copy" data-for="starter114" data-raw="1">Copy</button></div>
+    <pre id="starter114">I&#x27;m not technical, so please do everything for me and explain each step in plain English.
+
+Use Jev 1.14, TypeSafe&#x27;s decision model (model id: typesafe/jev-1.14), through OpenRouter&#x27;s Decisions API:
+POST https://openrouter.ai/api/alpha/decisions
+Header: Authorization: Bearer &lt;my OpenRouter key&gt;
+Body: {&quot;model&quot;: &quot;typesafe/jev-1.14&quot;, &quot;state&quot;: &quot;&lt;the context as plain text&gt;&quot;, &quot;questions&quot;: {&quot;&lt;name&gt;&quot;: {&quot;type&quot;: &quot;noul&quot;, &quot;instructions&quot;: &quot;&lt;a yes/no question&gt;&quot;}, &quot;&lt;name2&gt;&quot;: {&quot;type&quot;: &quot;choice&quot;, &quot;instructions&quot;: &quot;...&quot;, &quot;criteria&quot;: {&quot;option_a&quot;: &quot;what it means&quot;, &quot;option_b&quot;: &quot;...&quot;}}}}
+Question types: noul (yes/no), choice (pick one), score (a number, with criteria saying what the low and high ends mean) and box (new in 1.14).
+Jev returns answers with probabilities and a confidence score. It never writes text, so use Claude for any writing and any maths.
+
+IMAGES: &quot;state&quot; can also be a list of parts that mixes text and images (PNG or JPEG, sent as base64 data URLs, 256 to 1568 pixels per side, 16 MB max each, stills only, no video). Read the exact format in OpenRouter&#x27;s Decisions API docs (openrouter.ai/docs/api/reference) before writing any code, and resize big images first.
+BOX: finds ONE target in an image and returns top, bottom, left and right as fractions from 0 to 1 (0,0 is the top-left corner), plus a confidence. It takes no criteria. It has no &quot;not found&quot; answer, so always pair it with a noul about the same target and ignore the box when the noul is low.
+EARLY FEATURES: TypeSafe says image input, Box and long context are not production-ready, and image answers are less accurate than text answers. Long inputs are slower and less accurate too, so keep each request as short as you can. Nothing here should be treated as final without my review.
+
+Ask me for my OpenRouter key when you need it and never save it in a file I might share. Run requests in parallel (about 20 at a time for images) and retry if one fails. Test on 10 items first and show me the results before running everything. Tell me the total Jev cost at the end.</pre>
+  </div>
+</section>
+
+<section class="case" id="ad-gatekeeper">
+  <div class="case-head">
+    <span class="num">09</span>
+    <div>
+      <span class="tag t-new">New in 1.14 · images</span>
+      <h2>Ad creative gatekeeper</h2>
+      <p class="who">For: Paid media, performance marketers, agencies</p>
+    </div>
+  </div>
+  <p class="what">Looks at every ad image before it goes live and flags the ones with unreadable text, a missing logo or no product, so you fix them before you spend a rupee or a dollar on them.</p>
+  
+  
+  <div class="cols">
+    <div>
+      <h3>Step by step</h3>
+      <ol><li>Put your ad images in one folder (PNG or JPEG).</li><li>Write 3 rules in plain words, like: text is readable on a phone, the logo is visible, the product is shown.</li><li>Paste the prompt. Claude builds a checker page and Jev answers every rule for every image.</li><li>Fix the flagged ones, and look at the low-confidence ones yourself.</li></ol>
+      <p class="honest"><b>Honest bit:</b> Jev checks clarity, not performance. A clear ad can still lose. Image answers are less accurate than text answers, so look at everything it flags and everything it&#x27;s unsure about.</p>
+    </div>
+    <div class="promptbox">
+      <div class="pb-head"><span>Prompt · paste into Claude or Codex</span><button class="copy" data-for="p-ad-gatekeeper" data-starter="starter114">Copy prompt</button></div>
+      <pre id="p-ad-gatekeeper">Check my ad images with Jev 1.14 before they go live.
+1. Ask me for the folder of ad images (PNG or JPEG) and my 3 rules, for example: the text is readable on a phone, the logo is visible, the product is shown.
+2. For each image, ask Jev (noul) one question per rule, such as: &quot;Is every piece of text in this image large enough to read on a phone screen?&quot; Resize large images before sending them.
+3. Also ask Jev (score, 1 to 10, with criteria saying what 1 and 10 mean): &quot;How clear is the main message at a glance?&quot;
+4. Build me a simple page: a grid of the images with a pass or fail badge per rule, the confidence next to each, and the lowest scores first.
+5. For every image that fails, have Claude write a one-line fix. Don&#x27;t change my images.</pre>
+    </div>
+  </div>
+</section>
+<section class="case" id="ugc-check">
+  <div class="case-head">
+    <span class="num">10</span>
+    <div>
+      <span class="tag t-new">New in 1.14 · images</span>
+      <h2>Creator &amp; UGC brand check</h2>
+      <p class="who">For: Influencer, affiliate and community managers</p>
+    </div>
+  </div>
+  <p class="what">Screens creator and affiliate submissions for your logo, competitor logos and other apps&#x27; watermarks, then sorts each one into approve, fix or reject, with how sure it is.</p>
+  
+  
+  <div class="cols">
+    <div>
+      <h3>Step by step</h3>
+      <ol><li>Collect the submissions as images. For a video, export one frame (Claude can do that for you). Jev only reads still images.</li><li>Write your rules: which logo must show, which competitors must not.</li><li>Paste the prompt. Jev checks every image and sorts them.</li><li>Read the fix pile and the low-confidence pile, then send the feedback yourself.</li></ol>
+      <p class="honest"><b>Honest bit:</b> Jev sees what&#x27;s in a picture, not whether the content is good or on-brand in tone. Never reject anyone automatically. A person makes the final call.</p>
+    </div>
+    <div class="promptbox">
+      <div class="pb-head"><span>Prompt · paste into Claude or Codex</span><button class="copy" data-for="p-ugc-check" data-starter="starter114">Copy prompt</button></div>
+      <pre id="p-ugc-check">Screen my creator submissions with Jev 1.14.
+1. Ask me for the folder of submissions (PNG or JPEG, one frame per video is fine), my brand name, and the competitors that must not appear.
+2. For each image, ask Jev (noul): &quot;Is [my brand] clearly visible?&quot;, &quot;Is a competitor&#x27;s logo visible? [names]&quot; and &quot;Is there a watermark from another app?&quot;
+3. Ask Jev (choice): approve, needs a fix, or reject. Use the answers above as the criteria.
+4. Put anything Jev is unsure about in a separate &quot;human look&quot; pile.
+5. For the &quot;needs a fix&quot; ones only, have Claude draft a friendly feedback message to the creator in my tone. Don&#x27;t send anything.</pre>
+    </div>
+  </div>
+</section>
+<section class="case" id="safe-zone">
+  <div class="case-head">
+    <span class="num">11</span>
+    <div>
+      <span class="tag t-new">New in 1.14 · Box</span>
+      <h2>Safe-zone &amp; CTA checker</h2>
+      <p class="who">For: Creative teams, designers, carousel and ad makers</p>
+    </div>
+  </div>
+  <p class="what">Finds exactly where your logo, headline and button sit on every creative, then flags the ones that break your layout rules, like a button hidden under the caption.</p>
+  
+  
+  <div class="cols">
+    <div>
+      <h3>Step by step</h3>
+      <ol><li>Put your creatives in one folder (PNG or JPEG) and note the format (square, 4:5, 9:16).</li><li>Write your layout rules, like: nothing important in the bottom 20%, headline in the top half.</li><li>Paste the prompt. Jev finds the positions, a small script checks them against your rules.</li><li>Open the preview with the boxes drawn on it and confirm the flags by eye.</li></ol>
+      <p class="honest"><b>Honest bit:</b> Box is the newest and least tested part of 1.14 and it can be off. That&#x27;s why step 5 draws the boxes on your image. Eyeball them before you trust any flag.</p>
+    </div>
+    <div class="promptbox">
+      <div class="pb-head"><span>Prompt · paste into Claude or Codex</span><button class="copy" data-for="p-safe-zone" data-starter="starter114">Copy prompt</button></div>
+      <pre id="p-safe-zone">Check the layout of my creatives with Jev 1.14&#x27;s Box question.
+1. Ask me for the folder of creatives (PNG or JPEG), the format, and my rules, for example: no logo or button in the bottom 20% (the caption covers it), headline in the top half, button fully inside the frame. For a carousel, also check that the headline sits in the same place on every slide.
+2. For each creative, ask Jev (box) one question per item: &quot;Where is the logo?&quot;, &quot;Where is the main headline?&quot;, &quot;Where is the call-to-action button?&quot; Each answer is top, bottom, left and right as fractions from 0 to 1, plus a confidence.
+3. Box always returns a box, even when the thing isn&#x27;t there. So for each item also ask Jev (noul): &quot;Is there a [logo / headline / button] in this image?&quot; and ignore the box when the noul is low.
+4. Write a short script that checks the numbers against my rules (for example, a bottom edge above 0.8 means the item sits in the bottom 20%). Don&#x27;t ask Jev to do the maths.
+5. Show me a table of every creative and which rules it breaks, plus a preview with the boxes drawn on it so I can see what Jev saw.</pre>
+    </div>
+  </div>
+</section>
+<section class="case" id="swipe-file">
+  <div class="case-head">
+    <span class="num">12</span>
+    <div>
+      <span class="tag t-new">New in 1.14 · images</span>
+      <h2>Swipe-file sorter</h2>
+      <p class="who">For: Marketers, agencies, founders doing competitor research</p>
+    </div>
+  </div>
+  <p class="what">Sorts a pile of saved screenshots into ads, landing pages and posts, then has Claude analyse only the ones with a clear offer, so you read 40 instead of 300.</p>
+  
+  
+  <div class="cols">
+    <div>
+      <h3>Step by step</h3>
+      <ol><li>Put your saved competitor screenshots in one folder.</li><li>List the competitors they come from.</li><li>Paste the prompt. Jev filters, then Claude reads only what passed.</li><li>Skim a sample of the rejected pile to make sure nothing good got dropped.</li></ol>
+      <p class="honest"><b>Honest bit:</b> Jev is the cheap filter, Claude is the expensive reader. The filter will miss some good ones, so skim 20 from the rejected pile before you trust it.</p>
+    </div>
+    <div class="promptbox">
+      <div class="pb-head"><span>Prompt · paste into Claude or Codex</span><button class="copy" data-for="p-swipe-file" data-starter="starter114">Copy prompt</button></div>
+      <pre id="p-swipe-file">Sort my competitor swipe file with Jev 1.14, then have Claude analyse the best ones.
+1. Ask me for the folder of screenshots (PNG or JPEG) and the competitors they come from.
+2. For each screenshot, ask Jev (choice): ad, landing page, social post, pricing page or other.
+3. Ask Jev (noul): &quot;Is a price or an offer clearly visible?&quot; and &quot;Is there a clear call to action?&quot;
+4. Keep only the ones where both are yes, and tell me how many passed and how many were rejected.
+5. For the ones that passed, have Claude (not Jev) read each one and write the hook, the angle, the offer and what I could do differently. Group by competitor and finish with the 3 patterns that repeat.</pre>
+    </div>
+  </div>
+</section>
+<section class="case" id="account-risk">
+  <div class="case-head">
+    <span class="num">13</span>
+    <div>
+      <span class="tag t-new">New in 1.14 · long context</span>
+      <h2>Account risk read</h2>
+      <p class="who">For: Sales, account managers, customer success</p>
+    </div>
+  </div>
+  <p class="what">Reads one account&#x27;s whole history (emails, call notes, tickets) in a single request and tells you who may be about to leave, why, and how urgent it is.</p>
+  
+  
+  <div class="cols">
+    <div>
+      <h3>Step by step</h3>
+      <ol><li>For your most important accounts, put each account&#x27;s history in one text file, oldest first.</li><li>Check your company&#x27;s privacy rules before sending customer data to any outside service.</li><li>Paste the prompt. Jev scores every account.</li><li>Call the top of the list this week. Read the middle ones before deciding.</li></ol>
+      <p class="honest"><b>Honest bit:</b> Long context is an early feature: slower and less accurate, and TypeSafe still recommends short inputs. Use it on your top accounts and check every flag before you act.</p>
+    </div>
+    <div class="promptbox">
+      <div class="pb-head"><span>Prompt · paste into Claude or Codex</span><button class="copy" data-for="p-account-risk" data-starter="starter114">Copy prompt</button></div>
+      <pre id="p-account-risk">Find which of my accounts are at risk with Jev 1.14.
+1. Ask me for one text file per account with all the emails, call notes and tickets, oldest first. Start with my 20 most important accounts. Trim anything old or irrelevant, because shorter is better for Jev.
+2. For each account, ask Jev (noul): &quot;Is this customer at risk of leaving or not renewing?&quot;
+3. Ask Jev (choice) for the main reason: price, support problems, low usage, a competitor, a change on their side, or no sign of risk.
+4. Ask Jev (score, 1 to 10, with criteria): &quot;How urgent is it to talk to this customer this week?&quot;
+5. Sort into &quot;call this week&quot;, &quot;look closer&quot; and &quot;fine for now&quot; using Jev&#x27;s probability (I&#x27;ll tell you the cut-offs after we see the spread). For the &quot;call this week&quot; ones, have Claude draft a short check-in email for me to approve. Send nothing.</pre>
+    </div>
+  </div>
+</section>
+<section class="case" id="multilingual-inbox">
+  <div class="case-head">
+    <span class="num">14</span>
+    <div>
+      <span class="tag t-new">New in 1.14 · multilingual</span>
+      <h2>Multilingual inbox triage</h2>
+      <p class="who">For: Sales, social media managers, brands with a global audience</p>
+    </div>
+  </div>
+  <p class="what">Sorts comments, DMs, lead replies and reviews written in any language into buyers, questions, complaints, praise and spam, with urgency, so the hot ones get answered first.</p>
+  
+  
+  <div class="cols">
+    <div>
+      <h3>Step by step</h3>
+      <ol><li>Export or paste your comments, DMs, replies or reviews into a list.</li><li>Try it first on a language you read, with 20 messages you already know the answer to.</li><li>Paste the prompt. Jev sorts the original text, no translating first.</li><li>Read the drafted replies and approve them yourself, or ask someone who speaks the language.</li></ol>
+      <p class="honest"><b>Honest bit:</b> TypeSafe expects multilingual to be the biggest improvement in 1.14, but no benchmark has been published. Test it on a language you read before trusting it, and have a native speaker check any reply you can&#x27;t read.</p>
+    </div>
+    <div class="promptbox">
+      <div class="pb-head"><span>Prompt · paste into Claude or Codex</span><button class="copy" data-for="p-multilingual-inbox" data-starter="starter114">Copy prompt</button></div>
+      <pre id="p-multilingual-inbox">Triage my multi-language inbox with Jev 1.14.
+1. Help me get my comments, DMs, lead replies or reviews into a list (a CSV or a paste is fine). Send Jev the original text, don&#x27;t translate it first.
+2. For each message, ask Jev (noul): &quot;Is this person showing a buying signal?&quot;
+3. Ask Jev (choice): question, complaint, praise, collab or brand deal, or spam.
+4. Ask Jev (score, 1 to 10, with criteria): &quot;How urgent is it to reply today?&quot;
+5. For the buying signals and questions only, have Claude draft a reply in the same language as the message, for me to approve. Don&#x27;t send anything. Give me the sorted list, hottest first.</pre>
     </div>
   </div>
 </section>
@@ -367,6 +574,7 @@ Ask me for my OpenRouter key when you need it and never save it in a file I migh
     <li><b>It's not always right.</b> Check 20 answers by hand before you trust it on your whole list, and look at the low-confidence ones first.</li>
     <li><b>It's bad at rules.</b> Maths, dates, "sort by revenue". That's still a spreadsheet job.</li>
     <li><b>It only decides.</b> Anything that needs writing goes to Claude.</li>
+    <li><b>The 1.14 features are early.</b> Images, Box and long context are opt-in, and TypeSafe itself says they aren't production-ready. Image answers are less accurate than text answers. Treat builds 09 to 14 as drafts you check, not systems you trust.</li>
     <li><b>It drafts, you approve.</b> Nothing in this playbook should email, post or change your site without you looking first.</li>
     <li><b>Keep keys private.</b> Never paste your key into a file you share. If you ever do, delete it at openrouter.ai and make a new one.</li>
   </ul>
@@ -382,10 +590,10 @@ Ask me for my OpenRouter key when you need it and never save it in a file I migh
 </footer>
 
 <script>
-const STARTER=document.getElementById('starter').textContent;
 document.querySelectorAll('button.copy').forEach(b=>b.addEventListener('click',async()=>{
   const body=document.getElementById(b.dataset.for).textContent;
-  const text=b.dataset.raw?body:STARTER+'\n\n---\n\n'+body;
+  const starter=document.getElementById(b.dataset.starter||'starter').textContent;
+  const text=b.dataset.raw?body:starter+'\n\n---\n\n'+body;
   try{await navigator.clipboard.writeText(text)}catch(e){const t=document.createElement('textarea');t.value=text;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove()}
   const old=b.textContent;b.textContent='Copied ✓';b.classList.add('done');setTimeout(()=>{b.textContent=old;b.classList.remove('done')},1600);
 }));
